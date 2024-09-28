@@ -1,6 +1,6 @@
 {
   "name": "ui-kit-conf",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "./dist/index.js",
   "scripts": {
     "pub": "webpack && npm version patch && npm publish",
