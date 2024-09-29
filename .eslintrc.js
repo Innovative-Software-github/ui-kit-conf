@@ -18,14 +18,13 @@ module.exports = {
       version: 'detect',
     },
   },
-  extends: [
-    'eslint:recommended',
+  extends: ['eslint:recommended',
     'airbnb',
     'plugin:jsx-a11y/recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-  ],
+    'plugin:storybook/recommended'],
   rules: {
     'import/extensions': 'off',
     'comma-dangle': ['error', 'always-multiline'],
@@ -62,6 +61,7 @@ module.exports = {
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
     'react/jsx-filename-extension': 'off',
+    "react/jsx-props-no-spreading": 0,
     'jsx-a11y/label-has-associated-control': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
@@ -79,5 +79,5 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
   },
-  ignorePatterns: ['**/.eslintrc.js'],
+  ignorePatterns: ['.eslintrc.js', 'src/stories/*', 'webpack.config.js', 'dist'],
 };
