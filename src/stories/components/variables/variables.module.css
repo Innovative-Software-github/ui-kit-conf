@@ -1,0 +1,35 @@
+* {
+  font-family: monospace; 
+  /* Убрать, когда появятся шрифты */
+}
+
+.colorGroupContent {
+  display: flex;
+  gap: 15px;
+}
+
+.colorItem {
+  width: 150px;
+}
+
+.colorItem span {
+  white-space: pre;
+}
+
+.colorBlock {
+  all: unset; 
+  
+  display: block;
+  width: 100%;
+  height: 150px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+
+  box-shadow: 1px 1px 5px 1px #0000004b;
+  transition: transform 300ms ease;
+  cursor: pointer;
+}
+
+.colorBlock:hover {
+  transform: scale(105%);
+}

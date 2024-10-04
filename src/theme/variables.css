@@ -1,0 +1,38 @@
+:root {
+  --conf-color-white: #FFFFFF;
+  --conf-color-black: #000000;
+
+  --conf-color-cyan-1: #F1FCFB;
+  --conf-color-cyan-2: #E7F9F8;
+  --conf-color-cyan-3: #CFF3F1;
+  --conf-color-cyan-4: #A0E8E3;
+  --conf-color-cyan-5: #70DCD6;
+  --conf-color-cyan-6: #41D1C8;
+  --conf-color-cyan-7: #11C5BA;
+  --conf-color-cyan-8: #20B4AC;
+  --conf-color-cyan-9: #119E96;
+
+  --conf-color-grey-1: #F8F8F8;
+  --conf-color-grey-2: #ECECEC;
+  --conf-color-grey-3: #DADADA;
+  --conf-color-grey-4: #B5B5B5;
+  --conf-color-grey-5: #909090;
+  --conf-color-grey-6: #6A6A6A;
+  --conf-color-grey-7: #454545;
+
+  --conf-color-green-1: #F5FCFA;
+  --conf-color-green-2: #E6F7F3;
+  --conf-color-green-3: #CDF0E6;
+  --conf-color-green-4: #9BE1CE;
+  --conf-color-green-5: #69D1B5;
+  --conf-color-green-6: #37C29D;
+  --conf-color-green-7: #05B384;
+
+  --conf-color-red-1: #FEF7F7;
+  --conf-color-red-2: #FCECEC;
+  --conf-color-red-3: #FAD8D8;
+  --conf-color-red-4: #F5B2B2;
+  --conf-color-red-5: #EF8B8B;
+  --conf-color-red-6: #EA6565;
+  --conf-color-red-7: #E53E3E;
+}

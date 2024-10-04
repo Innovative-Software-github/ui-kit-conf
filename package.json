@@ -3,6 +3,7 @@
   "version": "1.0.2",
   "main": "./dist/index.js",
   "scripts": {
+    "webpack": "webpack",
     "pub": "webpack && npm version patch && npm publish",
     "lint": "eslint --ext .ts,.tsx ./src",
     "lint:fix": "npm run lint -- --fix",
