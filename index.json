@@ -1,1 +1,1 @@
-{"v":5,"entries":{}}
+{"v":5,"entries":{"variables--variables-palette":{"type":"story","id":"variables--variables-palette","name":"Variables Palette","title":"Variables","importPath":"./src/stories/components/variables/variables.stories.tsx","componentPath":"./src/stories/components/variables/variables.tsx","tags":["dev","test"]}}}
