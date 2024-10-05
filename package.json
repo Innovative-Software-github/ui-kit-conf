@@ -2,13 +2,18 @@
   "name": "ui-kit-conf",
   "version": "1.0.2",
   "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Innovative-Software-github/ui-kit-conf"
+  },
   "scripts": {
     "webpack": "webpack",
     "pub": "webpack && npm version patch && npm publish",
     "lint": "eslint --ext .ts,.tsx ./src",
     "lint:fix": "npm run lint -- --fix",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "deploy": "gh-pages -d storybook-static"
   },
   "keywords": [],
   "author": "",
@@ -36,6 +41,7 @@
     "eslint-plugin-jsx-a11y": "^6.10.0",
     "eslint-plugin-react": "^7.37.0",
     "eslint-plugin-storybook": "^0.9.0",
+    "gh-pages": "^6.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "storybook": "^8.3.4",
