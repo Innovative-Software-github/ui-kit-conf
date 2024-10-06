@@ -1,8 +1,3 @@
-* {
-  font-family: monospace; 
-  /* Убрать, когда появятся шрифты */
-}
-
 .colorGroupContent {
   display: flex;
   gap: 15px;
