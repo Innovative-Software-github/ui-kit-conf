@@ -30,6 +30,14 @@ module.exports = {
         ],
       },
       {
+        test: /\.css$/,
+        exclude: /\.module\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+      {
         test: /\.(ts|tsx)?$/,
         use: ['ts-loader'],
         exclude: /node_modules/,
