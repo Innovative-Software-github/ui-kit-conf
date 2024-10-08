@@ -42,5 +42,3 @@ export const colorVariables = {
     '--conf-color-white',
   ],
 };
-
-export const copyToClipboard = (color) => navigator.clipboard.writeText(color);

@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.wrapper div {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.iconButton {
+  all: unset;
+  display: inline-block;
+  padding: 15px;
+  border: 2px solid var(--conf-color-grey-3);
+  border-radius: 15px;
+  
+  transition: background 150ms ease;
+}
+
+.iconButton:hover {
+  background: var(--conf-color-grey-1);
+  cursor: pointer;
+}

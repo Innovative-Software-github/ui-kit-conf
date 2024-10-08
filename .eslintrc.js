@@ -46,7 +46,7 @@ module.exports = {
         ignoreRegExpLiterals: true,
       },
     ],
-    'sort-keys': ['error', 'asc', { caseSensitive: true, natural: false, minKeys: 2 }],
+    'sort-keys': 'off',
     quotes: ['error', 'single', { avoidEscape: true }],
     'prefer-promise-reject-errors': [1],
     'no-nested-ternary': [1],
