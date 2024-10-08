@@ -79,5 +79,5 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
   },
-  ignorePatterns: ['.eslintrc.js', 'src/stories/*', 'webpack.config.js', 'dist'],
+  ignorePatterns: ['.eslintrc.js', 'src/**/*.stories.@(js|jsx|mjs|ts|tsx)', 'webpack.config.js', 'dist'],
 };
