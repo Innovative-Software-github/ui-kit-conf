@@ -9,7 +9,7 @@ import { copyToClipboard } from '../../../utils/copyToClipboard';
 export const AllIcons = () => (
   <>
     <strong>Нажми на блок чтобы скопировать css переменную</strong>
-    <div className={cls.wrapper}>
+    <div className={cls.container}>
       {Object.values(IconType).map((iconType) => (
         <div key={iconType}>
           <button type="button" className={cls.iconButton} onClick={() => copyToClipboard(iconType)}>

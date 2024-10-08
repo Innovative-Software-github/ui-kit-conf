@@ -6,7 +6,7 @@ import {
   IconType, iconToComponent,
 } from './IconsMapping';
 
-import cls from './Icon.module.css';
+import './Icon.css';
 
 const DISPLAY_NAME = 'Icon';
 const DEFAULT_SIZE = 24;
@@ -75,17 +75,17 @@ export const Icon = React.forwardRef<HTMLSpanElement, IIconProps>((props, ref) =
   return (
     <span
       ref={ref}
-      className={clsx(cls.wrapper, className, {
-        [cls.autoWidth]: !width,
-        [cls.autoHeight]: !height,
+      className={clsx('wrapper', className, {
+        autoWidth: !width,
+        autoHeight: !height,
       })}
       style={cssWrapperStyle}
       title={title}
       onClick={onClick}
     >
       <span
-        className={clsx(cls.icon, {
-          [cls.scalable]: isScalable,
+        className={clsx('icon', {
+          scalable: isScalable,
         })}
       >
         {icon}
