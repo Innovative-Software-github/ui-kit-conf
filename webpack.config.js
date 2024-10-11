@@ -23,13 +23,19 @@ module.exports = {
       {
         test: /\.module\.css$/,
         use: [
-          'style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: true,
+            },
+          },
           {
             loader: 'css-loader',
             options: {
               modules: {
                 localIdentName: `conf__[name]__[local]__[hash:base64:5]`,
               },
+              esModule: true,
             },
           },
         ],
@@ -40,7 +46,7 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'postcss-loader', // И здесь
+          'postcss-loader',
         ],
       },
       {
