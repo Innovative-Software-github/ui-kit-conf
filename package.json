@@ -1,6 +1,6 @@
 {
   "name": "ui-kit-conf",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "main": "./dist/index.js",
   "style": "./dist/styles.css",
   "repository": {
@@ -20,7 +20,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "clsx": "^2.1.1"
+    "clsx": "^2.1.1",
+    "postcss": "^8.4.47",
+    "postcss-loader": "^8.1.1"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
@@ -46,8 +48,6 @@
     "eslint-plugin-storybook": "^0.9.0",
     "gh-pages": "^6.1.1",
     "mini-css-extract-plugin": "^2.9.1",
-    "postcss": "^8.4.47",
-    "postcss-loader": "^8.1.1",
     "postcss-preset-env": "^10.0.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

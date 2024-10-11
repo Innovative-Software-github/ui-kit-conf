@@ -23,16 +23,15 @@ module.exports = {
       {
         test: /\.module\.css$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          'style-loader',
           {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: '[name]__[local]___[hash:base64:5]',
+                localIdentName: `conf__[name]__[local]__[hash:base64:5]`,
               },
             },
           },
-          'postcss-loader',
         ],
       },
       {
@@ -41,7 +40,7 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'postcss-loader',
+          'postcss-loader', // И здесь
         ],
       },
       {
