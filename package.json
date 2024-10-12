@@ -1,13 +1,18 @@
 {
   "name": "ui-kit-conf",
-  "version": "1.0.4",
+  "version": "1.0.16",
   "main": "./dist/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Innovative-Software-github/ui-kit-conf"
   },
   "scripts": {
-    "webpack": "webpack",
+    "build": "npm run lint && npm run build:withoutLint",
+    "build:withoutLint": "npm run compile:clean && npm run compile:types && npm run compile:code",
+    "checkTypes": "tsc --p tsconfig.types.json",
+    "compile:clean": "rm -rf dist/*",
+    "compile:code": "rollup --config rollup.config.js",
+    "compile:types": "tsc --p tsconfig.types.json",
     "pub": "webpack && npm version patch && npm publish",
     "lint": "eslint --ext .ts,.tsx ./src",
     "lint:fix": "npm run lint -- --fix",
