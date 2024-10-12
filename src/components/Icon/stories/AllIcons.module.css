@@ -1,10 +1,10 @@
-.container {
+.wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
 }
 
-.container div {
+.wrapper div {
   text-align: center;
   margin-top: 10px;
 }
