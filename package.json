@@ -1,6 +1,6 @@
 {
   "name": "ui-kit-conf",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "main": "./dist/index.js",
   "style": "./dist/styles.css",
   "repository": {
