@@ -1,16 +1,16 @@
 import path from 'path';
-import pkg from './package.json';
 import customResolveOptions from '@rollup/plugin-node-resolve';
 import url from '@rollup/plugin-url';
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
-import copy from 'rollup-plugin-copy'
-import del from 'rollup-plugin-delete'
+import copy from 'rollup-plugin-copy';
+import del from 'rollup-plugin-delete';
 import { terser } from 'rollup-plugin-terser';
 import autoprefixer from 'autoprefixer';
-import postcssPresetEnv  from 'postcss-preset-env';
+import postcssPresetEnv from 'postcss-preset-env';
 import genericNames from 'generic-names';
+import pkg from './package.json';
 
 process.env.NODE_ENV = 'production';
 
@@ -24,7 +24,7 @@ const cjsIndexCssPath = `${cjsDistDir}/index.css`;
 const esmIndexCssPath = `${esmDistDir}/index.css`;
 
 const classNameGenerator = genericNames(
-  'or_[name]_[local]_[hash:base64:6]',
+  'conf_[name]_[local]_[hash:base64:6]',
   {
     context: process.cwd(),
   },
@@ -84,11 +84,11 @@ export default {
         { src: ['src/theme/variables.css', 'src/theme/variables.css.d.ts'], dest: distDir },
         { src: 'package.json', dest: distDir },
       ],
-      hook: 'writeBundle'
+      hook: 'writeBundle',
     }),
     del({
       targets: [cjsIndexCssPath, esmIndexCssPath],
-      hook: 'closeBundle'
+      hook: 'closeBundle',
     }),
   ],
 };

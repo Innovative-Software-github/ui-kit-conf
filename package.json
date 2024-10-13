@@ -9,18 +9,18 @@
     "url": "https://github.com/Innovative-Software-github/ui-kit-conf"
   },
   "scripts": {
+    "start": "storybook dev -p 6006",
     "build": "npm run lint && npm run build:withoutLint",
     "build:withoutLint": "npm run compile:clean && npm run compile:types && npm run compile:code",
-    "checkTypes": "tsc --p tsconfig.types.json",
     "compile:clean": "rm -rf dist/*",
     "compile:code": "rollup --config rollup.config.js",
     "compile:types": "tsc --p tsconfig.types.json",
+    "checkTypes": "tsc --p tsconfig.types.json",
     "pub": "npm run build && npm version patch && npm publish",
     "lint": "eslint --ext .ts,.tsx ./src",
     "lint:fix": "npm run lint -- --fix",
-    "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "deploy": "gh-pages -d storybook-static"
+    "deploy": "storybook build gh-pages -d storybook-static"
   },
   "keywords": [],
   "author": "",

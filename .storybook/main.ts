@@ -1,3 +1,4 @@
+import path from 'path';
 import type { StorybookConfig } from "@storybook/react-webpack5";
 
 const config: StorybookConfig = {
@@ -9,10 +10,12 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
+    '@storybook/addon-css-modules'
   ],
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
   },
 };
+
 export default config;
