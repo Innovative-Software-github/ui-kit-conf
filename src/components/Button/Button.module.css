@@ -1,8 +1,11 @@
-/* .button[icon='download']{
-  gap: 10px;
-} */
+.button {
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-.button[type='filed'] {
+.button.filed {
   width: auto;
   padding: 14px 20px;
 
@@ -18,20 +21,20 @@
   font-weight: 400;
 }
 
-.button[type='filed']:hover {
+.button.filed:hover {
   background-color: var(--conf-color-cyan-8);
 }
 
-.button[type='filed']:active {
+.button.filed:active {
   background-color: var(--conf-color-cyan-9);
 }
 
-.button[type='filed']:disabled {
+.button.filed:disabled {
   background-color: var(--conf-color-cyan-2);
   color: var(--conf-color-cyan-4);
 }
 
-.button[type='outlined'] {
+.button.outlined {
   width: auto;
   padding: 14px 20px;
 
@@ -47,37 +50,39 @@
   font-weight: 400;
 }
 
-.button[type='outlined']:hover {
+.button.outlined:hover {
   background-color: var(--conf-color-cyan-2);
 }
 
-.button[type='outlined']:active {
+.button.outlined:active {
   background-color: var(--conf-color-cyan-3);
 }
 
-.button[type='outlined']:disabled {
+.button.outlined:disabled {
   background-color: var(--conf-color-cyan-2);
   color: var(--conf-color-cyan-4);
   border: 3px solid var(--conf-color-cyan-4);
 }
 
-.button[type='text'] {
+.button.text {
   all: unset;
   color: black;
   cursor: pointer;
 
   font-size: 1.3rem;
   font-weight: 400;
+  overflow: auto;
+  display: flex;
 }
 
-.button[type='text']:hover {
+.button.text:hover {
   color: var(--conf-color-cyan-7);
 }
 
-.button[type='text']:active {
+.button.text:active {
   color: var(--conf-color-cyan-6);
 }
 
-.button[type='text']:disabled {
+.button.text:disabled {
   color: var(--conf-color-cyan-4);
 }
