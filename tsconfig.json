@@ -32,6 +32,7 @@
     "noImplicitThis": true,
     "noImplicitAny": false,
     "strictNullChecks": false,
+    "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": false,
     "declaration": true,
     "experimentalDecorators": true,

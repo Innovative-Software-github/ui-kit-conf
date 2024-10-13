@@ -6,7 +6,7 @@ import {
   IconType, iconToComponent,
 } from './IconsMapping';
 
-import cls from './Icon.module.css';
+import cls from './Icon.css';
 
 const DISPLAY_NAME = 'Icon';
 const DEFAULT_SIZE = 24;

@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-require-imports
 const postcssPresetEnv = require('postcss-preset-env');
 
 module.exports = {
@@ -13,7 +12,7 @@ module.exports = {
         },
       },
       autoprefixer: {
-        grid: true,
+        grid: true
       },
     }),
   ],
