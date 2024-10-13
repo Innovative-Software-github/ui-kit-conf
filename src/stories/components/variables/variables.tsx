@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import cls from './variables.module.css';
 import { copyToClipboard } from '../../../utils/copyToClipboard';
 import { colorVariables } from './utils';
 
+import cls from './variables.module.css';
 import '../../../theme/variables.css';
 
 export const Variables = () => (

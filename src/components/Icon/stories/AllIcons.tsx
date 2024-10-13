@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import { Icon } from '../Icon';
 import { IconType } from '../IconsMapping';
+import { copyToClipboard } from '../../../utils/copyToClipboard';
 
 import cls from './AllIcons.module.css';
-import { copyToClipboard } from '../../../utils/copyToClipboard';
 
 export const AllIcons = () => (
   <>
