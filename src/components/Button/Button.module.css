@@ -68,6 +68,7 @@
   all: unset;
   color: black;
   cursor: pointer;
+  gap: 8px;
 
   font-size: 1.3rem;
   font-weight: 400;

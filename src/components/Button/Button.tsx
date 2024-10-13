@@ -1,18 +1,20 @@
 import React from 'react';
 import { clsx } from 'clsx';
+import { IconType } from '../Icon/IconsMapping';
+import { Icon } from '../Icon/Icon';
 import cls from './Button.module.css';
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: string;
   className?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   buttonType?: 'filed' | 'outlined' | 'text';
-  icon?: string;
+  icon?: IconType;
   isLoading?: boolean;
   disabled?: boolean;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<IButtonProps> = ({
   children,
   className,
   onClick,
@@ -34,9 +36,11 @@ export const Button: React.FC<ButtonProps> = ({
     disabled={disabled || isLoading}
     {...props}
   >
+    {icon && (
     <div>
-      {icon}
+      <Icon type={icon} />
     </div>
+    )}
     {children}
   </button>
 );
