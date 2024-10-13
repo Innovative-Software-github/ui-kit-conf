@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationDir": "./dist/types",
+    "lib": ["es2018", "dom"],
+    "module": "esnext",
+    "target": "es5",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "strict": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "downlevelIteration": true
+  },
+  "include": [
+    "./src/index.ts"
+  ],
+  "exclude": ["node_modules"]
+}
