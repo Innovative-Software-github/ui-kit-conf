@@ -1,3 +1,4 @@
-import './index.css';
+import './theme/variables.css';
 
-export { Input } from './components/Input/Input';
+export { Icon } from './components/Icon/Icon';
+export { IconType } from './components/Icon/IconsMapping';
