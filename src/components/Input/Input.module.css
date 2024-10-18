@@ -5,37 +5,12 @@
   height: 48px;
   padding: 0 16px;
 
-  border: 1px solid;
-  border-color: var(--conf-color-grey-6);;
+  border: 1px solid var(--conf-color-grey-4);
   border-radius: 14px;
 
   overflow: hidden;
-}
 
-.container:hover {
-  border: 1px solid var(--conf-color-grey-5);
-}
-
-.container.error {
-  border-color: var(--conf-color-red-7);
-}
-
-.container:focus-within {
-  border-color: var(--conf-color-cyan-7);
-}
-
-.container.disable,
-.container.disable .input {
-  border-color: var(--conf-color-grey-1);
-  color: var(--conf-color-grey-4);
-}
-
-.container .prefix {
-  padding-right: 8px;
-}
-
-.container .suffix {
-  padding-left: 8px;
+  transition: all 150ms ease;
 }
 
 .input {
@@ -49,9 +24,61 @@
   cursor: default;
 }
 
+.input::placeholder {
+  color: var(--conf-color-grey-4);
+}
+
+.container:hover {
+  border: 1px solid var(--conf-color-grey-5);
+}
+
+.container:hover .input::placeholder {
+  color: var(--conf-color-grey-5);
+}
+
+.container:focus-within {
+  border-color: var(--conf-color-cyan-7);
+}
+
+.container:focus-within .input::placeholder {
+  color: var(--conf-color-grey-4);
+}
+
+.container.error {
+  border-color: var(--conf-color-red-7);
+}
+
+.container.loading {
+  border-color: var(--conf-color-grey-2);
+}
+
+.container.loading,
+.container.loading .input::placeholder {
+  color: var(--conf-color-grey-2);
+}
+
+.container.disable,
+.container.disable .input,
+.container.disable .input::placeholder {
+  border-color: var(--conf-color-grey-2);
+  color: var(--conf-color-grey-2);
+}
+
 .prefix,
 .suffix {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.container .prefix {
+  padding-right: 8px;
+}
+
+.container .suffix {
+  padding-left: 8px;
+}
+
+.loadingSpinner {
+  color: var(--conf-color-grey-7);
 }
