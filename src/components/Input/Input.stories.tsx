@@ -24,16 +24,16 @@ export const InputVariations: Story = {
         <Input
           {...args}
           size="L"
-          elPrefix={<Icon type={IconType.ArrowRight_20} width={20} height={20} />}
+          elPrefix={<Icon type={IconType.Done_20} width={20} height={20} />}
           elSuffix={<Icon type={IconType.ArrowDown_20} width={20} height={20} />}
-          placeholder="Введите имя..."
+          placeholder="Placeholder"
         />
         <Input
           {...args}
           size="M"
           elPrefix={<Icon type={IconType.Done_20} width={20} height={20} />}
           elSuffix={<Icon type={IconType.ArrowDown_20} width={20} height={20} />}
-          placeholder="Введите имя..."
+          placeholder="Placeholder"
         />
       </div>
       <div style={{
@@ -44,13 +44,13 @@ export const InputVariations: Story = {
           {...args}
           size="L"
           elPrefix={<Icon type={IconType.Done_20} width={20} height={20} />}
-          placeholder="Введите имя..."
+          placeholder="Placeholder"
         />
         <Input
           {...args}
           size="M"
           elPrefix={<Icon type={IconType.Done_20} width={20} height={20} />}
-          placeholder="Введите имя..."
+          placeholder="Placeholder"
         />
       </div>
       <div style={{
@@ -61,13 +61,13 @@ export const InputVariations: Story = {
           {...args}
           size="L"
           elSuffix={<Icon type={IconType.ArrowDown_20} width={20} height={20} />}
-          placeholder="Введите имя..."
+          placeholder="Placeholder"
         />
         <Input
           size="M"
           {...args}
           elSuffix={<Icon type={IconType.ArrowDown_20} width={20} height={20} />}
-          placeholder="Введите имя..."
+          placeholder="Placeholder"
         />
       </div>
       <div style={{
@@ -77,12 +77,12 @@ export const InputVariations: Story = {
         <Input
           {...args}
           size="L"
-          placeholder="Введите имя..."
+          placeholder="Placeholder"
         />
         <Input
           size="M"
           {...args}
-          placeholder="Введите имя..."
+          placeholder="Placeholder"
         />
       </div>
     </div>
