@@ -1,16 +1,17 @@
-import * as React from 'react';
+import React from 'react';
 import clsx from 'clsx';
 
-import { Icon } from '../Icon/Icon';
-import { IconType } from '../Icon/IconsMapping';
-
 import cls from './Input.module.css';
+import { Spinner } from '../Spinner/Spinner';
 
 const DISPLAY_NAME = 'input';
 
-export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export type TInputSize = 'L' | 'M';
+
+export interface IInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   value: string;
   type?: string;
+  size?: TInputSize;
   isError?: boolean;
   isLoading?: boolean;
   isDisabled?: boolean;
@@ -28,6 +29,7 @@ export const Input = React.forwardRef<HTMLInputElement, IInputProps>(
     const {
       value,
       type,
+      size = 'L',
       className,
       isError,
       isLoading,
@@ -54,17 +56,19 @@ export const Input = React.forwardRef<HTMLInputElement, IInputProps>(
     const renderPrefix = () => elPrefix && <div className={cls.prefix}>{elPrefix}</div>;
 
     const renderSuffix = () => (isLoading ? (
-      <Icon className={cls.loadingSpinner} type={IconType.Checkmark_20} width={20} height={20} />
+      <Spinner className={cls.loadingSpinner} size="m" />
     ) : (
       elSuffix && <div className={cls.suffix}>{elSuffix}</div>
     ));
 
     return (
-      <div className={clsx(cls.container, className, {
-        [cls.error]: isError,
-        [cls.loading]: isLoading,
-        [cls.disable]: isDisabled,
-      })}
+      <div
+        className={clsx(cls.container, className, {
+          [cls.error]: isError,
+          [cls.loading]: isLoading,
+          [cls.disable]: isDisabled,
+        })}
+        data-size={size}
       >
         {renderPrefix()}
         <input
