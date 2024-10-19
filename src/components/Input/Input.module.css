@@ -92,6 +92,6 @@
   justify-content: center;
 }
 
-.loadingSpinner {
+.loadingSpinner[class] {
   color: var(--conf-color-grey-7);
 }

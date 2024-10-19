@@ -26,7 +26,7 @@ export const ArrowTop_20 = (
 );
 
 export const Close_20 = (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M5.567 15.763 4.4 14.597 9.067 9.93 4.4 5.263l1.167-1.166 4.667 4.666L14.9 4.097l1.167 1.166L11.4 9.93l4.667 4.667-1.167 1.166-4.666-4.666z" fill="currentColor" />
   </svg>
 );
