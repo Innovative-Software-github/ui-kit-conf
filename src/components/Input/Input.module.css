@@ -74,6 +74,7 @@
 }
 
 .container.loading,
+.container.loading .input,
 .container.loading .input::placeholder {
   color: var(--conf-color-grey-2);
 }

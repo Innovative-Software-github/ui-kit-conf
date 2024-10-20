@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.icon {
+  margin-right: 4px;
+}
+
+.error {
+  color: var(--conf-color-red-6);
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.info {
+  color: var(--conf-color-grey-7);
+  font-size: 14px;
+  line-height: 18px;
+}

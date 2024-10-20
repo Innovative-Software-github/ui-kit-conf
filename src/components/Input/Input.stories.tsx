@@ -80,8 +80,8 @@ export const InputVariations: Story = {
           placeholder="Placeholder"
         />
         <Input
-          size="M"
           {...args}
+          size="M"
           placeholder="Placeholder"
         />
       </div>
