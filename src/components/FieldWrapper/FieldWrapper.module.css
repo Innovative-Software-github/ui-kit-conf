@@ -1,0 +1,50 @@
+.fieldWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldWrapper[data-type='error'] .statusMessage,
+.fieldWrapper[data-type='loading'] .statusMessage {
+  font-weight: 500;
+}
+
+.fieldWrapper[data-type='loading'] .statusMessage,
+.fieldWrapper[data-type='loading'] .label {
+  color: var(--conf-color-grey-4);
+}
+
+.fieldWrapper[data-type='disabled'] .label,
+.fieldWrapper[data-type='disabled'] .statusMessage {
+  color: var(--conf-color-grey-4);
+}
+
+/* Размер L */
+.fieldWrapper[data-size='L'] .label,
+.fieldWrapper[data-size='M'] .label {
+  margin-bottom: 8px;
+}
+
+.fieldWrapper[data-size='L'] .statusMessage,
+.fieldWrapper[data-size='M'] .statusMessage {
+  margin-top: 6px;
+}
+
+.fieldWrapper[data-size='L'] .label,
+.fieldWrapper[data-size='M'] .label {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.fieldWrapper[data-size='L'] .statusMessage {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.fieldWrapper[data-size='L'] .statusMessage {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.icon {
+  margin-right: 8px;
+}
