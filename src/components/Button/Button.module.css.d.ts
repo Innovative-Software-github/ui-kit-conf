@@ -3,8 +3,6 @@ declare const cls: {
   readonly filed: string;
   readonly outlined: string;
   readonly text: string;
-  readonly autoHeight: string;
-  readonly scalable: string;
 };
 
 export = cls;

@@ -1,37 +1,108 @@
 import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
-import { IconType } from '../Icon/IconsMapping';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Button, IButtonProps } from './Button';
+import { IconType } from '../Icon/IconsMapping';
 
-const iconOptions = Object.values(IconType);
-
-export default {
+const meta: Meta<typeof Button> = {
   component: Button,
-  title: 'Button',
-  argTypes: {
-    buttonType: {
-      type: 'string',
-      className: 'filed',
-      options: ['filed', 'outlined', 'text'],
-      control: {
-        type: 'select',
-      },
-    },
-    icon: {
-      defaultValue: '',
-      options: ['', ...iconOptions],
-      control: {
-        type: 'select',
-      },
-    },
+};
+
+export default meta;
+type Story = StoryObj<typeof Button>;
+
+export const InputVariations: Story = {
+  render: (args) => (
+    <div style={{
+      display: 'flex', flexDirection: 'column', gap: '30px',
+    }}
+    >
+      <div style={{
+        display: 'flex', alignItems: 'end', gap: '20px', maxWidth: '700px',
+      }}
+      >
+        <Button
+          {...args}
+          variant="filed"
+          icon={IconType.Edit_20}
+          size="L"
+        />
+        <Button
+          {...args}
+          variant="filed"
+          icon={IconType.Edit_20}
+          size="M"
+        />
+      </div>
+      <div style={{
+        display: 'flex', alignItems: 'end', gap: '20px', maxWidth: '700px',
+      }}
+      >
+        <Button
+          {...args}
+          variant="filed"
+          size="L"
+        />
+        <Button
+          {...args}
+          variant="filed"
+          size="M"
+        />
+      </div>
+      <div style={{
+        display: 'flex', alignItems: 'end', gap: '20px', maxWidth: '700px',
+      }}
+      >
+        <Button
+          {...args}
+          variant="outlined"
+          icon={IconType.Edit_20}
+          size="L"
+        />
+        <Button
+          {...args}
+          variant="outlined"
+          icon={IconType.Edit_20}
+          size="M"
+        />
+      </div>
+      <div style={{
+        display: 'flex', alignItems: 'end', gap: '20px', maxWidth: '700px',
+      }}
+      >
+        <Button
+          {...args}
+          variant="outlined"
+          size="L"
+        />
+        <Button
+          {...args}
+          variant="outlined"
+          size="M"
+        />
+      </div>
+      <div style={{
+        display: 'flex', alignItems: 'end', gap: '20px', maxWidth: '700px',
+      }}
+      >
+        <Button
+          {...args}
+          variant="text"
+          icon={IconType.Edit_20}
+          size="L"
+        />
+        <Button
+          {...args}
+          variant="text"
+          icon={IconType.Edit_20}
+          size="M"
+        />
+      </div>
+    </div>
+  ),
+  args: {
+    isError: false,
+    isLoading: false,
+    isDisabled: false,
+    children: 'press',
   },
-} as Meta;
-
-const Template: StoryFn<IButtonProps> = (args: React.JSX.IntrinsicAttributes & IButtonProps) => <Button {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  children: 'press',
-  buttonType: 'filed',
-  icon: '',
 };

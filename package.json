@@ -87,8 +87,5 @@
   },
   "files": [
     "dist"
-  ],
-  "dependencies": {
-    "clsx": "^2.1.1"
-  }
+  ]
 }

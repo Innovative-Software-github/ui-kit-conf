@@ -1,89 +1,94 @@
 .button {
-  overflow: auto;
   display: flex;
   align-items: center;
   gap: 8px;
-}
 
-.button.filed {
-  width: auto;
-  padding: 14px 20px;
-
-  color: white;
-  background-color: var(--conf-color-cyan-7);
-
-  border-radius: 20px;
+  border-radius: 18px;
   border: none;
 
   cursor: pointer;
 
-  font-size: 1.3rem;
   font-weight: 400;
 }
 
-.button.filed:hover {
+.button[data-size="L"] {
+  padding: 14px 20px;
+  font-size: 16px;
+}
+
+.loading[data-size="L"],
+.paddingClass[data-size="L"] {
+  padding: 14px 20px 14px 14px;
+  font-size: 16px;
+}
+
+.button[data-size="M"] {
+  padding: 12px 20px;
+  font-size: 14px;
+}
+
+.loading[data-size="M"],
+.paddingClass[data-size="M"] {
+  padding: 12px 20px 12px 14px;
+  font-size: 14px;
+}
+
+.button[data-variant='filed'] {
+  color: var(--conf-color-white);
+  background-color: var(--conf-color-cyan-7);
+}
+
+.button.loading[data-variant='filed'],
+.button.disable[data-variant='filed'] {
+  background-color: var(--conf-color-cyan-2);
+  color: var(--conf-color-cyan-4);
+}
+
+.button[data-variant='filed']:hover {
   background-color: var(--conf-color-cyan-8);
 }
 
-.button.filed:active {
+.button[data-variant='filed']:active {
   background-color: var(--conf-color-cyan-9);
 }
 
-.button.filed:disabled {
-  background-color: var(--conf-color-cyan-2);
-  color: var(--conf-color-cyan-4);
+.button[data-variant='outlined'] {
+  color: var(--conf-color-black);
+  background-color: var(--conf-color-white);
+
+  border: 2px solid var(--conf-color-cyan-7);
 }
 
-.button.outlined {
-  width: auto;
-  padding: 14px 20px;
-
-  color: black;
-  background-color: white;
-
-  border-radius: 20px;
-  border: 3px solid var(--conf-color-cyan-7);
-
-  cursor: pointer;
-
-  font-size: 1.3rem;
-  font-weight: 400;
-}
-
-.button.outlined:hover {
+.button[data-variant='outlined']:hover {
   background-color: var(--conf-color-cyan-2);
 }
 
-.button.outlined:active {
+.button[data-variant='outlined']:active {
   background-color: var(--conf-color-cyan-3);
 }
 
-.button.outlined:disabled {
+.button.loading[data-variant='outlined'],
+.button.disable[data-variant='outlined'] {
   background-color: var(--conf-color-cyan-2);
   color: var(--conf-color-cyan-4);
-  border: 3px solid var(--conf-color-cyan-4);
+  border-color: var(--conf-color-cyan-4);
 }
 
-.button.text {
-  all: unset;
-  color: black;
-  cursor: pointer;
-  gap: 8px;
-
-  font-size: 1.3rem;
-  font-weight: 400;
-  overflow: auto;
-  display: flex;
+.button[data-variant='text'] {
+  border: none;
+  background: none;
+  padding: 0px;
 }
 
-.button.text:hover {
+.button[data-variant='text']:hover {
   color: var(--conf-color-cyan-7);
 }
 
-.button.text:active {
+.button[data-variant='text']:active {
   color: var(--conf-color-cyan-6);
 }
 
-.button.text:disabled {
+.button.loading[data-variant='text'],
+.button.disable[data-variant='text'] {
   color: var(--conf-color-cyan-4);
 }
