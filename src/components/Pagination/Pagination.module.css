@@ -1,0 +1,94 @@
+.paginationButton,
+.ellipsis,
+.navigationButton {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--conf-color-black);
+  background-color: var(--conf-color-white);
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  width: 42px;
+  height: 42px;
+  line-height: 20px;
+  border-radius: 4px;
+}
+
+.paginationButton,
+.ellipsis{
+  overflow: hidden;
+}
+
+.ellipsis {
+  cursor: auto;
+  background-color: var(--conf-color-white);
+}
+
+.paginationButton:hover,
+.navigationButton:hover {
+  background-color: var(--conf-color-cyan-7);
+}
+
+.paginationButton:active:not(:disabled),
+.navigationButton:active:not(:disabled) {
+  color: var(--conf-color-black);
+  background-color: var(--conf-color-cyan-7);
+  border-radius: 4px;
+  outline: none;
+}
+
+.navigationButton {
+  width: auto;
+  gap: 8px;
+}
+
+.navigationButton:disabled {
+  cursor: not-allowed;
+  color: var(--conf-color-grey-4);
+  background: transparent;
+}
+
+.activePageButton {
+  background-color: var(--conf-color-cyan-7);
+  border-radius: 4px;
+}
+
+.WrapperPaginated {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.nextButton {
+  margin-left: 24px;
+}
+
+.backButton {
+  margin-right: 24px;
+}
+
+@media (max-width: 768px) {
+  .paginationButton,
+  .ellipsis{
+    font-size: 12px;
+    width: 32px;
+    height: 34px;
+  }
+  .navigationButton{
+    font-size: 14px;
+  }
+  .nextButton {
+    margin-left: 18px;
+  }
+
+  .backButton {
+    margin-right: 18px;
+  }
+}
