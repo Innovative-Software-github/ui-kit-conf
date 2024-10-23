@@ -56,6 +56,7 @@ export const Pagination = ({
         className={clsx(clx.navigationButton, clx.backButton)}
         disabled={currentPage === 1}
         onClick={() => handlePageChange(currentPage - 1)}
+        type="button"
       >
         <Icon type={IconType.ArrowLeft_20} width={20} />
         <span>Назад</span>
@@ -67,6 +68,7 @@ export const Pagination = ({
       ) : (
         typeof page === 'number' && (
         <button
+          type="button"
           className={
                 page === currentPage
                   ? clsx(clx.paginationButton, clx.activePageButton)
@@ -82,6 +84,7 @@ export const Pagination = ({
         )
       )))}
       <button
+        type="button"
         className={clsx(clx.navigationButton, clx.nextButton)}
         disabled={currentPage === totalPages}
         onClick={() => handlePageChange(currentPage + 1)}
