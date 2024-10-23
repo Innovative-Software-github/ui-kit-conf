@@ -26,13 +26,19 @@
   background-color: var(--conf-color-white);
 }
 
-.paginationButton:hover,
-.navigationButton:hover {
+.paginationButton:hover {
   background-color: var(--conf-color-cyan-7);
 }
 
-.paginationButton:active:not(:disabled),
-.navigationButton:active:not(:disabled) {
+.navigationButton:hover {
+  color: var(--conf-color-cyan-7);
+}
+
+.navigationButton:active:not(:disabled){
+  opacity: 0.8;
+}
+
+.paginationButton:active:not(:disabled) {
   color: var(--conf-color-black);
   background-color: var(--conf-color-cyan-7);
   border-radius: 4px;
@@ -53,12 +59,6 @@
 .activePageButton {
   background-color: var(--conf-color-cyan-7);
   border-radius: 4px;
-}
-
-.WrapperPaginated {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .container {
@@ -90,5 +90,9 @@
 
   .backButton {
     margin-right: 18px;
+  }
+  .navigationButton svg {
+    width: 18px;
+    height: 18px;
   }
 }

@@ -4,7 +4,6 @@ declare const cls: {
   readonly navigationButton: string;
   readonly ellipsis: string;
   readonly activePageButton: string;
-  readonly WrapperPaginated: string;
   readonly container: string;
   readonly nextButton: string;
   readonly backButton: string;

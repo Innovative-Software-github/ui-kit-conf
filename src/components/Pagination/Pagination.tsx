@@ -58,7 +58,7 @@ export const Pagination = ({
         onClick={() => handlePageChange(currentPage - 1)}
         type="button"
       >
-        <Icon type={IconType.ArrowLeft_20} />
+        <Icon type={IconType.ArrowLeft_20} width={20} />
         <span>Назад</span>
       </button>
       {pages.map((page) => (typeof page === 'string' ? (
@@ -90,7 +90,7 @@ export const Pagination = ({
         type="button"
       >
         <span>Дальше</span>
-        <Icon type={IconType.ArrowRight_20} />
+        <Icon type={IconType.ArrowRight_20} width={20} />
       </button>
     </div>
   );
