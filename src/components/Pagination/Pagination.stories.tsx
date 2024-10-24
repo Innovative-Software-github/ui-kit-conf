@@ -15,10 +15,10 @@ export const PaginationDefault: Story = {
   args: {
     currentPage: 1,
     handlePageChange: () => {},
-    itemsPerPage: 10,
-    totalItems: 100,
+    itemsPerPage: 15,
+    totalItems: 1000,
   },
-  render: ({ totalItems }) => {
+  render: ({ totalItems, itemsPerPage }) => {
     const [currentPage, setCurrentPage] = useState(1);
 
     const handlePageChangeInternal = (page: number) => {
@@ -29,7 +29,7 @@ export const PaginationDefault: Story = {
       <Pagination
         currentPage={currentPage}
         handlePageChange={handlePageChangeInternal}
-        itemsPerPage={15}
+        itemsPerPage={itemsPerPage}
         totalItems={totalItems}
       />
     );
