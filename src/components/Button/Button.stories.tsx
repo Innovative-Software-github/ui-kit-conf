@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, IButtonProps } from './Button';
+import { Button } from './Button';
 import { IconType } from '../Icon/IconsMapping';
 
 const meta: Meta<typeof Button> = {
@@ -23,7 +23,7 @@ export const InputVariations: Story = {
         <Button
           {...args}
           variant="filed"
-          icon={IconType.Edit_20}
+          leftIconType={IconType.ArrowDown_20}
           size="L"
         />
         <Button
@@ -100,7 +100,6 @@ export const InputVariations: Story = {
     </div>
   ),
   args: {
-    isError: false,
     isLoading: false,
     isDisabled: false,
     children: 'press',

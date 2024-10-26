@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import React, { forwardRef } from 'react';
 import { clsx } from 'clsx';
 import { IconType } from '../Icon/IconsMapping';
@@ -8,17 +9,20 @@ import cls from './Button.module.css';
 
 const DISPLAY_NAME = 'Button';
 
-export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export type TButtonType = 'button' | 'submit' | 'reset';
+export type TButtonSize = 'M' | 'L';
+export type TButtonVariant = 'filed' | 'outlined' | 'text';
+export interface IButtonProps extends React.ReactNode<HTMLButtonElement> {
   children?: string;
   className?: string;
-  variant: 'filed' | 'outlined' | 'text';
+  variant: TButtonVariant;
   icon?: IconType;
-  isError?: boolean;
   isLoading?: boolean;
   isDisabled?: boolean;
-  paddingClass?: boolean;
-  type?: 'button' | 'submit' | 'reset',
-  size?: 'M' | 'L'
+  type?: TButtonType;
+  size?: TButtonSize;
+  leftIconType?: IconType;
+  rightIconType?: IconType
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -27,38 +31,50 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>((props, ref) =
     children,
     className,
     icon,
-    isError,
     isLoading,
     isDisabled,
-    disabled,
-    variant,
+    variant = 'filed',
     size = 'L',
     type = 'button',
+    rightIconType,
+    leftIconType,
     onClick,
     ...restProps
   } = props;
 
+  const renderLeftIcon = () => {
+    if (isLoading) {
+      return <Spinner className={cls.loadingSpinner} size="m" />;
+    }
+
+    return icon && <Icon width={20} height={20} type={leftIconType} className="iconIsLeft" />;
+  };
+
+  const renderRightIcon = () => {
+    if (isLoading) {
+      return <Spinner className={cls.loadingSpinner} size="m" />;
+    }
+
+    return icon && <Icon width={20} height={20} type={rightIconType} className="iconIsRight" />;
+  };
+
   return (
     <button
+      className={clsx(cls.button, className, {
+        [cls.loading]: isLoading,
+        [cls.disable]: isDisabled,
+      })}
       {...restProps}
       ref={ref}
       data-variant={variant}
       data-size={size}
-      type={type ? 'button' : 'submit'}
-      className={clsx(cls.button, className, {
-        [cls.error]: isError,
-        [cls.loading]: isLoading,
-        [cls.disable]: isDisabled,
-        [cls.paddingClass]: !!icon,
-      })}
+      type={type}
       onClick={onClick}
+      disabled={isDisabled || isLoading}
     >
-      {isLoading ? (
-        <Spinner className={cls.loadingSpinner} size="m" />
-      ) : (
-        icon && <Icon width={20} height={20} type={icon} />
-      )}
+      {renderLeftIcon()}
       {children}
+      {renderRightIcon()}
     </button>
   );
 });
