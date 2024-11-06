@@ -20,6 +20,7 @@ const options: ISelectOption[] = [
 ]
 
 export const InputVariations: Story = {
+    
   render: (args) => (
     <div style={{
       display: 'flex', flexDirection: 'column', gap: '30px',
@@ -29,7 +30,10 @@ export const InputVariations: Story = {
         display: 'flex', alignItems: 'end', gap: '20px', maxWidth: '700px',
       }}
       >
-        <Select options={options}></Select>
+        <Select 
+            options={options}
+            onSelectChange={selectedOption => console.log('selected option: ', selectedOption)}
+        ></Select>
       </div>
     </div>
   ),
