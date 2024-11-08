@@ -33,7 +33,8 @@ export const InputVariations: Story = {
         <Select 
             options={options}
             onSelectChange={selectedOption => console.log('selected option: ', selectedOption)}
-        ></Select>
+        >
+        </Select>
       </div>
     </div>
   ),

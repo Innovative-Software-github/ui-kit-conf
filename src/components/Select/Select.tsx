@@ -1,7 +1,7 @@
 import { IconType } from "../Icon/IconsMapping";
 import { Icon } from "../Icon/Icon";
 import { Input } from "../Input/Input";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { FC } from "react";
 
 interface ISelectProps {
@@ -19,24 +19,37 @@ export const Select: FC<ISelectProps> = ({
     onSelectChange
 }) => {
     const [inputVal, setInputVal] = useState("");
-    const satisfyingOptions: ISelectOption[] = useMemo(() => {
-        return options.filter(option => option.title.includes(inputVal) && inputVal !== '')
-    }, [inputVal]);
+    const [satisfyingOptions, setSatisfyingOptions] = useState<ISelectOption[]>([]);
     const [selectedOption, setSelectedOption] = useState<ISelectOption | undefined>();
+    const [isOptionsOpened, setIsOptionsOpened] = useState(false);
+
+    useEffect(() => {
+        setIsOptionsOpened(false);
+        setInputVal(selectedOption ? selectedOption.title : '');
+    }, [selectedOption]) 
+
+    useEffect(() => {
+        if (satisfyingOptions.length > 0) setIsOptionsOpened(true);
+        else setIsOptionsOpened(false);
+    }, [satisfyingOptions])
 
     return (
         <div style={{border: '1px black solid', listStyle: "none"}}>
             <Input
                 size="M"
                 elPrefix={<Icon type={IconType.Done_20} width={20} height={20} />}
-                placeholder="Placeholder" value={inputVal} onChange={(e) => {setInputVal(e.target.value)}} ></Input>
+                placeholder="Выберите опцию..." value={inputVal} onChange={(e) => {
+                    const inp = e.target.value;
+                    setSatisfyingOptions(options.filter(option => option.title.includes(inp) && inp !== ''));
+                    setInputVal(inp);
+                 }} ></Input>
 
-            {satisfyingOptions.length > 0 && 
+            {isOptionsOpened && 
             <ul  style={{border: '1px black solid'}}>
-                {options.map(option => 
+                {satisfyingOptions.map(option => 
                 <li 
                     key={option.value}
-                    onClick={() => { setInputVal(option.title); setSelectedOption(option); onSelectChange(option); }}
+                    onClick={() => { setSelectedOption({...option}) }}
                 >
                     {option.title}
                 </li>)}
