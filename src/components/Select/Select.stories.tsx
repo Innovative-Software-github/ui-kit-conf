@@ -1,23 +1,16 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Icon, IconType } from '../..';
-import Option from './ui/Option';
-import { ISelectOption, Select } from './Select';
+import { MultiSelect } from './MultiSelect';
+import { Select } from './Select';
 
-const meta: Meta<typeof Option> = {
-  component: Option,
+const meta: Meta<typeof MultiSelect> = {
+  component: MultiSelect,
 };
 
 export default meta;
-type Story = StoryObj<typeof Option>;
+type Story = StoryObj<typeof MultiSelect>;
 
-const options: ISelectOption[] = [
-    { title: 'Opt1', value: 'opt1' },
-    { title: 'Opt2', value: 'opt2' },
-    { title: 'Opt3', value: 'opt3' },
-    { title: 'Opt4', value: 'opt4' },
-]
 
 export const InputVariations: Story = {
     
@@ -27,14 +20,11 @@ export const InputVariations: Story = {
     }}
     >
       <div style={{
-        display: 'flex', alignItems: 'end', gap: '20px', maxWidth: '700px',
+        display: 'flex', flexDirection: 'column', gap: '50px'
       }}
       >
-        <Select 
-            options={options}
-            onSelectChange={selectedOption => console.log('selected option: ', selectedOption)}
-        >
-        </Select>
+        <MultiSelect></MultiSelect>
+        <Select/>
       </div>
     </div>
   ),

@@ -6,24 +6,24 @@ interface SelectProps {
     
 }
  
-export const Select: FC<SelectProps> = () => {
+export const MultiSelect: FC<SelectProps> = () => {
     const [isPending, startTransition] = useTransition();
     const [searchValue, setSearchValue] = useState("");
-    const [selectedValue, setSelectedValue] = useState("");
+    const [selectedValues, setSelectedValues] = useState<string[]>(["Bacon"]);
 
     const matches = useMemo(() => list.filter(option => option.toLowerCase().includes(searchValue)), [searchValue]);
 
     useEffect(() => {
-      console.log(selectedValue);
-    }, [selectedValue])
+      console.log(selectedValues);
+    }, [selectedValues])
 
     return (
         <Ariakit.ComboboxProvider
           setValue={(value) => {
             startTransition(() => setSearchValue(value));
           }}
-          setSelectedValue={(val) => setSelectedValue(val)}
-          selectedValue={selectedValue}
+          setSelectedValue={(val) => setSelectedValues(val)}
+          selectedValue={selectedValues}
         >
       <Ariakit.ComboboxLabel className="label">
         Your favorite food
@@ -39,7 +39,10 @@ export const Select: FC<SelectProps> = () => {
               key={value}
               value={value}
               className="combobox-item"
-            />
+            >
+              <Ariakit.ComboboxItemCheck />
+              {value}
+            </Ariakit.ComboboxItem>
           ))
         ) : (
           <div className="no-results">No results found</div>
