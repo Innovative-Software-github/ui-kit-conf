@@ -1,0 +1,13 @@
+.comboboxWrapper {
+    position: relative;
+}
+
+.comboboxDisclosure {
+    position: absolute;
+    right: -92%;
+    bottom: 35px;
+}
+
+.comboboxInput {
+    width: 100px;
+}

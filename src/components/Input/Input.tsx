@@ -9,7 +9,7 @@ const DISPLAY_NAME = 'input';
 export type TInputSize = 'L' | 'M';
 
 export interface IInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  value: string;
+  value?: string;
   type?: string;
   size?: TInputSize;
   isError?: boolean;
@@ -20,7 +20,7 @@ export interface IInputProps extends Omit<React.InputHTMLAttributes<HTMLInputEle
   placeholder?: string;
   className?: string;
   autoComplete?: string;
-  onChange(event: React.ChangeEvent<HTMLInputElement>): void;
+  onChange?(event: React.ChangeEvent<HTMLInputElement>): void;
   onPressEnter?(event: React.SyntheticEvent<HTMLInputElement>): void;
 }
 
