@@ -42,7 +42,7 @@ export const Select: FC<SelectProps> = () => {
         <Ariakit.ComboboxDisclosure className={cls.comboboxDisclosure}
          render={<Icon type={IconType.ArrowDown_20} width={20} height={20}/>} />
       </div>
-      <Ariakit.ComboboxPopover gutter={4} sameWidth>
+      <Ariakit.ComboboxPopover className={cls.comboboxPopover} gutter={4} sameWidth>
       {matches.length ? (
           matches.map((value) => (
             <Ariakit.ComboboxItem

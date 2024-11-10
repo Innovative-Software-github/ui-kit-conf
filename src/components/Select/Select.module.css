@@ -1,13 +1,17 @@
 .comboboxWrapper {
+    width: fit-content;
     position: relative;
 }
 
 .comboboxDisclosure {
     position: absolute;
-    right: -92%;
-    bottom: 35px;
+    right: 0.75rem;
+    top: 30%;
 }
 
 .comboboxInput {
-    width: 100px;
+}
+
+.comboboxPopover {
+    border: 1px solid black;
 }
