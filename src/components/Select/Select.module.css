@@ -10,9 +10,14 @@
 }
 
 .comboboxPopover {
+    margin: 0 -1rem; /* popover клеится к input, а не div в <Input/>, соответственно, растягиваем popover на размер padding  */
     top: 5px;
     border-radius: 0.875rem;
     box-shadow: 0px 0px 7px 0px rgba(0, 0, 31, 0.2);
+}
+
+.comboboxInput {
+    width: 100%;
 }
 
 .comboboxOption {

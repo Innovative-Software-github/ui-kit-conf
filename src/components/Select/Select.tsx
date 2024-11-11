@@ -36,7 +36,6 @@ export const Select: FC<SelectProps> = () => {
       <div className={cls.comboboxWrapper}>
         <Ariakit.Combobox placeholder="e.g., Pizza" 
         render={<Input
-            size="L"
             className={cls.comboboxInput}
           />} />
         <Ariakit.ComboboxDisclosure className={cls.comboboxDisclosure}
@@ -53,7 +52,7 @@ export const Select: FC<SelectProps> = () => {
             />
           ))
         ) : (
-          <div className={clsx([cls.comboboxPopover, cls.comboboxOption])}>No results found</div>
+            <div className={cls.comboboxOption}>Не найдено</div>
         )}
       </Ariakit.ComboboxPopover>
     </Ariakit.ComboboxProvider>
