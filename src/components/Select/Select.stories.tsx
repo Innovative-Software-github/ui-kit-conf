@@ -1,15 +1,15 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { MultiSelect } from './MultiSelect';
-import { Select } from './Select';
+import { Select } from './SingleSelect/Select';
+import { MultiSelect } from './MultiSelect/MultiSelect';
 
-const meta: Meta<typeof MultiSelect> = {
-  component: MultiSelect,
+const meta: Meta<typeof Select> = {
+  component: Select,
 };
 
 export default meta;
-type Story = StoryObj<typeof MultiSelect>;
+type Story = StoryObj<typeof Select>;
 
 
 export const InputVariations: Story = {
@@ -23,8 +23,8 @@ export const InputVariations: Story = {
         display: 'flex', flexDirection: 'column', gap: '50px'
       }}
       >
-        <MultiSelect></MultiSelect>
         <Select/>
+        <MultiSelect/>
       </div>
     </div>
   ),

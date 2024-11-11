@@ -4,7 +4,7 @@
 }
 
 .comboboxDisclosure {
-    position: absolute;
+    position: absolute !important; /* position: relative в Icon.module.css мешает */
     right: 0.75rem;
     top: 30%;
 }
