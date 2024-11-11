@@ -46,12 +46,14 @@ export const Select: FC<SelectProps> = () => {
       {matches.length ? (
           matches.map((value) => (
             <Ariakit.ComboboxItem
-              key={value}
-              value={value}
+                className={cls.comboboxOption}
+                key={value}
+                value={value}
+                data-hoverable={true}
             />
           ))
         ) : (
-          <div className="no-results">No results found</div>
+          <div className={clsx([cls.comboboxPopover, cls.comboboxOption])}>No results found</div>
         )}
       </Ariakit.ComboboxPopover>
     </Ariakit.ComboboxProvider>
