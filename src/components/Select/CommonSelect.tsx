@@ -1,27 +1,25 @@
-import React, { ReactElement, ReactNode } from "react";
-import { FC } from "react";
+import React, { FC } from "react";
 import * as Ariakit from "@ariakit/react";
 import cls from './Select.module.css';
 import { Input } from "../Input/Input";
 import { Icon } from "../Icon/Icon";
 import { IconType } from "../Icon/IconsMapping";
-
-interface CommonSelectProps {
-    options: string[];
-    optionIcon?: ReactElement;
-}
+import { CommonSelectProps } from "./types/SelectProps";
  
 export const CommonSelect: FC<CommonSelectProps> = ({
     options,
-    optionIcon
+    optionIcon,
+    label,
+    emptyMessage,
+    placeholder
 }: CommonSelectProps) => {
     return ( 
         <>
             <Ariakit.ComboboxLabel>
-            Your favorite food
+                {label}
             </Ariakit.ComboboxLabel>
             <div className={cls.comboboxWrapper}>
-            <Ariakit.Combobox placeholder="e.g., Pizza" 
+            <Ariakit.Combobox placeholder={placeholder}
             render={<Input
                 className={cls.comboboxInput}
                 />} />
@@ -42,7 +40,7 @@ export const CommonSelect: FC<CommonSelectProps> = ({
                     </Ariakit.ComboboxItem>
                 ))
             ) : (
-                <div className={cls.comboboxOption}>Не найдено</div>
+                <div className={cls.comboboxOption}>{emptyMessage ?? 'Не найдено'}</div>
             )}
             </Ariakit.ComboboxPopover>
         </>

@@ -1,22 +1,26 @@
 import * as Ariakit from "@ariakit/react";
-import list from "../list";
-import React, { FC, useMemo, useState, useTransition } from "react";
-import cls from '../Select.module.css';
-import { Input } from "../../Input/Input";
-import { Icon } from "../../Icon/Icon";
-import { IconType } from "../../Icon/IconsMapping";
+import React, { FC, useEffect, useMemo, useState, useTransition } from "react";
 import { CommonSelect } from "../CommonSelect";
+import { SingleSelectProps } from "../types/SelectProps";
+import { findMatch } from "../utils/findMatch";
 
-interface SelectProps {
-    
-}
- 
-export const Select: FC<SelectProps> = () => {
+export const Select: FC<SingleSelectProps> = ({
+  onSelectChange,
+  options,
+  label,
+  emptyMessage,
+  placeholder
+}) => {
     const [isPending, startTransition] = useTransition();
     const [searchValue, setSearchValue] = useState("");
     const [selectedValue, setSelectedValue] = useState("");
 
-    const matches = useMemo(() => list.filter(option => option.toLowerCase().includes(searchValue.toLowerCase())), [searchValue]);
+    const matches = useMemo(() =>
+       findMatch(options, searchValue), [searchValue]);
+
+    useEffect(() => {
+      onSelectChange(selectedValue);
+    }, [selectedValue])
 
     return (
       <Ariakit.ComboboxProvider
@@ -26,7 +30,12 @@ export const Select: FC<SelectProps> = () => {
         setSelectedValue={(val) => setSelectedValue(val)}
         selectedValue={selectedValue}
       >
-        <CommonSelect options={matches} />
+        <CommonSelect
+          options={matches}
+          label={label}
+          emptyMessage={emptyMessage}
+          placeholder={placeholder}
+          />
     </Ariakit.ComboboxProvider>
     );
 }
