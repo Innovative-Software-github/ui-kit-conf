@@ -5,6 +5,7 @@ import { Input } from "../Input/Input";
 import { Icon } from "../Icon/Icon";
 import { IconType } from "../Icon/IconsMapping";
 import { CommonSelectProps } from "./types/SelectProps";
+import clsx from "clsx";
  
 export const CommonSelect: FC<CommonSelectProps> = ({
     options,
@@ -15,7 +16,7 @@ export const CommonSelect: FC<CommonSelectProps> = ({
 }: CommonSelectProps) => {
     return ( 
         <>
-            <Ariakit.ComboboxLabel>
+            <Ariakit.ComboboxLabel className={cls.comboboxLabel}>
                 {label}
             </Ariakit.ComboboxLabel>
             <div className={cls.comboboxWrapper}>
@@ -30,7 +31,7 @@ export const CommonSelect: FC<CommonSelectProps> = ({
             {options.length ? (
                 options.map((value) => (
                     <Ariakit.ComboboxItem
-                        className={cls.comboboxOption}
+                        className={clsx([cls.comboboxOption, cls.comboboxLabel])}
                         key={value}
                         value={value}
                         data-hoverable={true}
@@ -40,7 +41,7 @@ export const CommonSelect: FC<CommonSelectProps> = ({
                     </Ariakit.ComboboxItem>
                 ))
             ) : (
-                <div className={cls.comboboxOption}>{emptyMessage ?? 'Не найдено'}</div>
+                <div className={clsx([cls.comboboxOption, cls.comboboxLabel])}>{emptyMessage ?? 'Не найдено'}</div>
             )}
             </Ariakit.ComboboxPopover>
         </>

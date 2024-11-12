@@ -4,6 +4,7 @@ declare const cls: {
     readonly comboboxInput: string;
     readonly comboboxPopover: string;
     readonly comboboxOption: string;
+    readonly comboboxLabel: string;
   };
   
   export = cls;
