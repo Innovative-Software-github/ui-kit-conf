@@ -1,5 +1,5 @@
-import { ComboboxItemCheckProps } from "@ariakit/react";
-import { ReactElement } from "react";
+import { ComboboxItemCheckProps } from '@ariakit/react';
+import { ReactElement } from 'react';
 
 interface SelectProps {
     options: string[];

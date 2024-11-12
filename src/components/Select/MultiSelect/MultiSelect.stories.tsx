@@ -14,10 +14,8 @@ type Story = StoryObj<typeof MultiSelect>;
 export const SelectFirst: Story = {
   args: {
     options: list,
-    onSelectChange: newSelection => console.log(newSelection),
+    onSelectChange: (newSelection) => console.log(newSelection),
     label: 'Choose multiple',
-    placeholder: 'Введите'
-  }
-}
-
-
+    placeholder: 'Введите',
+  },
+};

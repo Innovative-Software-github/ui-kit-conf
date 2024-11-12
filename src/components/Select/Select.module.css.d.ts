@@ -6,5 +6,5 @@ declare const cls: {
     readonly comboboxOption: string;
     readonly comboboxLabel: string;
   };
-  
+
   export = cls;
