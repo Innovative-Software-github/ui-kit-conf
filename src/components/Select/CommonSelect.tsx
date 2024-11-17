@@ -1,11 +1,11 @@
 import React, { FC, ReactElement } from 'react';
 import * as Ariakit from '@ariakit/react';
 import clsx from 'clsx';
+import { ComboboxItemCheckProps } from '@ariakit/react';
 import cls from './Select.module.css';
 import { Input } from '../Input/Input';
 import { Icon } from '../Icon/Icon';
 import { IconType } from '../Icon/IconsMapping';
-import { ComboboxItemCheckProps } from '@ariakit/react';
 import { SelectProps } from './types/SelectProps';
 
 interface CommonSelectProps extends SelectProps {

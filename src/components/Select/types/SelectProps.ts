@@ -4,7 +4,3 @@ export interface SelectProps {
     emptyMessage?: string;
     placeholder?: string;
 }
-
-
-
-

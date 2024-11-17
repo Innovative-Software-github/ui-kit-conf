@@ -2,9 +2,9 @@ import * as Ariakit from '@ariakit/react';
 import React, {
   FC, useEffect, useMemo, useState,
 } from 'react';
+import { matchSorter } from 'match-sorter';
 import { CommonSelect } from '../CommonSelect';
 import { SelectProps } from '../types/SelectProps';
-import { matchSorter } from 'match-sorter';
 
 export interface SingleSelectProps extends SelectProps {
   onSelectChange(selectedValue: string): void;
