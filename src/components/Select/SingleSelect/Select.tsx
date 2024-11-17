@@ -3,8 +3,12 @@ import React, {
   FC, useEffect, useMemo, useState,
 } from 'react';
 import { CommonSelect } from '../CommonSelect';
-import { SingleSelectProps } from '../types/SelectProps';
+import { SelectProps } from '../types/SelectProps';
 import { matchSorter } from 'match-sorter';
+
+export interface SingleSelectProps extends SelectProps {
+  onSelectChange(selectedValue: string): void;
+}
 
 export const Select: FC<SingleSelectProps> = ({
   onSelectChange,

@@ -3,8 +3,12 @@ import React, {
   FC, useEffect, useMemo, useState,
 } from 'react';
 import { CommonSelect } from '../CommonSelect';
-import { MultiSelectProps } from '../types/SelectProps';
+import { SelectProps } from '../types/SelectProps';
 import { matchSorter } from 'match-sorter';
+
+interface MultiSelectProps extends SelectProps {
+  onSelectChange(selectedValue: string[]): void;
+}
 
 export const MultiSelect: FC<MultiSelectProps> = ({
   onSelectChange,
