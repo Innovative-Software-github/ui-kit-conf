@@ -1,7 +1,9 @@
 import React, { FC, ReactElement } from 'react';
-import * as Ariakit from '@ariakit/react';
+import {
+  Combobox, ComboboxDisclosure, ComboboxItem, ComboboxLabel, ComboboxPopover,
+  ComboboxItemCheckProps,
+} from '@ariakit/react';
 import clsx from 'clsx';
-import { ComboboxItemCheckProps } from '@ariakit/react';
 import cls from './CommonSelect.module.css';
 import { Input } from '../Input/Input';
 import { Icon } from '../Icon/Icon';
@@ -20,11 +22,11 @@ export const CommonSelect: FC<CommonSelectProps> = ({
   placeholder,
 }) => (
   <>
-    <Ariakit.ComboboxLabel className={cls.comboboxLabel}>
+    <ComboboxLabel className={cls.comboboxLabel}>
       {label}
-    </Ariakit.ComboboxLabel>
+    </ComboboxLabel>
     <div className={cls.comboboxWrapper}>
-      <Ariakit.Combobox
+      <Combobox
         placeholder={placeholder}
         render={(
           <Input
@@ -32,15 +34,15 @@ export const CommonSelect: FC<CommonSelectProps> = ({
           />
 )}
       />
-      <Ariakit.ComboboxDisclosure
+      <ComboboxDisclosure
         className={cls.comboboxDisclosure}
         render={<Icon type={IconType.ArrowDown_20} width={20} height={20} />}
       />
     </div>
-    <Ariakit.ComboboxPopover className={cls.comboboxPopover} gutter={4} sameWidth>
+    <ComboboxPopover className={cls.comboboxPopover} gutter={4} sameWidth>
       {options.length ? (
         options.map((value) => (
-          <Ariakit.ComboboxItem
+          <ComboboxItem
             className={clsx([cls.comboboxOption, cls.comboboxLabel])}
             key={value}
             value={value}
@@ -48,11 +50,11 @@ export const CommonSelect: FC<CommonSelectProps> = ({
           >
             {value}
             {optionIcon}
-          </Ariakit.ComboboxItem>
+          </ComboboxItem>
         ))
       ) : (
         <div className={clsx([cls.comboboxOption, cls.comboboxLabel])}>{emptyMessage ?? 'Не найдено'}</div>
       )}
-    </Ariakit.ComboboxPopover>
+    </ComboboxPopover>
   </>
 );
