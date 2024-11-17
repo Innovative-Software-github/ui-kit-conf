@@ -19,12 +19,17 @@ export const Select: FC<SingleSelectProps> = ({
   const matches = useMemo(() => findMatch(options, searchValue), [searchValue]);
 
   useEffect(() => {
+    console.log('matches', matches);
+    
+  }, [matches]) 
+
+  useEffect(() => {
     onSelectChange(selectedValue);
   }, [selectedValue]);
 
   return (
     <Ariakit.ComboboxProvider
-      setValue={(value) => () => setSearchValue(value)}
+      setValue={(value) => setSearchValue(value)}
       setSelectedValue={(val) => setSelectedValue(val)}
       selectedValue={selectedValue}
     >
