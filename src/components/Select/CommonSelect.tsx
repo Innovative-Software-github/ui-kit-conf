@@ -13,7 +13,7 @@ export const CommonSelect: FC<CommonSelectProps> = ({
   label,
   emptyMessage,
   placeholder,
-}: CommonSelectProps) => (
+}) => (
   <>
     <Ariakit.ComboboxLabel className={cls.comboboxLabel}>
       {label}
