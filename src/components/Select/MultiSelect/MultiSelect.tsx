@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import { CommonSelect } from '../CommonSelect';
 import { MultiSelectProps } from '../types/SelectProps';
-import { findMatch } from '../utils/findMatch';
+import { matchSorter } from 'match-sorter';
 
 export const MultiSelect: FC<MultiSelectProps> = ({
   onSelectChange,
@@ -16,7 +16,7 @@ export const MultiSelect: FC<MultiSelectProps> = ({
   const [searchValue, setSearchValue] = useState('');
   const [selectedValues, setSelectedValues] = useState([]);
 
-  const matches = useMemo(() => findMatch(options, searchValue), [searchValue]);
+  const matches = useMemo(() => matchSorter(options, searchValue), [searchValue]);
 
   useEffect(() => {
     onSelectChange(selectedValues);
@@ -24,7 +24,7 @@ export const MultiSelect: FC<MultiSelectProps> = ({
 
   return (
     <Ariakit.ComboboxProvider
-      setValue={(value) => () => setSearchValue(value)}
+      setValue={(value) => setSearchValue(value)}
       setSelectedValue={(val) => setSelectedValues(val)}
       selectedValue={selectedValues}
     >

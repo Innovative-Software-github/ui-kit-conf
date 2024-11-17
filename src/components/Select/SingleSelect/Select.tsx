@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import { CommonSelect } from '../CommonSelect';
 import { SingleSelectProps } from '../types/SelectProps';
-import { findMatch } from '../utils/findMatch';
+import { matchSorter } from 'match-sorter';
 
 export const Select: FC<SingleSelectProps> = ({
   onSelectChange,
@@ -16,12 +16,7 @@ export const Select: FC<SingleSelectProps> = ({
   const [searchValue, setSearchValue] = useState('');
   const [selectedValue, setSelectedValue] = useState('');
 
-  const matches = useMemo(() => findMatch(options, searchValue), [searchValue]);
-
-  useEffect(() => {
-    console.log('matches', matches);
-    
-  }, [matches]) 
+  const matches = useMemo(() => matchSorter(options, searchValue), [searchValue]);
 
   useEffect(() => {
     onSelectChange(selectedValue);
