@@ -1,6 +1,5 @@
 .button {
   display: flex;
-  align-items: center;
   gap: 8px;
   transition: 150ms;
 
@@ -12,58 +11,52 @@
   font-weight: 400;
 }
 
-.loadingSpinner {
-  color: var(--conf-color-cyan-7);
+.button[data-size="M"] {
+  padding: 12px 14px;
+  font-size: 14px;
+  border-radius: 14px;
+}
+.button:has(.leftIcon)[data-size="M"],
+.button:has(.rightIcon)[data-size="M"] {
+  padding: 11px 14px;
+  font-size: 14px;
+  border-radius: 14px;
 }
 
 .button[data-size="L"] {
   padding: 14px 20px;
   font-size: 16px;
 }
-
-.loading[data-size="L"],
-.iconIsLeft[data-size="L"] {
-  padding: 14px;
+.button:has(.leftIcon)[data-size="L"],
+.button:has(.rightIcon)[data-size="L"]{
+  padding: 13px 20px;
   font-size: 16px;
 }
 
-.iconIsRight[data-size="L"] {
-  padding: 14px;
-  font-size: 16px;
+.loadingSpinner {
+  color: var(--conf-color-cyan-7);
 }
 
-.button[data-size="M"] {
-  padding: 12px 20px;
-  font-size: 14px;
-}
-
-.loading[data-size="M"],
-.iconIsLeft[data-size="M"] {
-  padding: 12px 14px;
-  font-size: 14px;
-}
-
-.iconIsLeft[data-size="M"] {
-  padding: 12px 14px;
-  font-size: 14px;
-}
-
-.button {
+.button[data-variant='filed'] {
   color: var(--conf-color-white);
   background-color: var(--conf-color-cyan-7);
 }
 
-.button.loading,
-.button.disable {
+.button:has(.loadingSpinner){
+  padding: 15px 20px;
+}
+
+.button.loading[data-variant='filed'],
+.button.disable[data-variant='filed'] {
   background-color: var(--conf-color-cyan-2);
   color: var(--conf-color-cyan-4);
 }
 
-.button:hover {
+.button[data-variant='filed']:hover {
   background-color: var(--conf-color-cyan-8);
 }
 
-.button:active {
+.button[data-variant='filed']:active {
   background-color: var(--conf-color-cyan-9);
 }
 

@@ -24,12 +24,53 @@ export const InputVariations: Story = {
           {...args}
           variant="filed"
           leftIconType={IconType.ArrowDown_20}
+          rightIconType={IconType.Edit_20}
           size="L"
         />
         <Button
           {...args}
           variant="filed"
-          icon={IconType.Edit_20}
+          leftIconType={IconType.ArrowDown_20}
+          size="L"
+        />
+        <Button
+          {...args}
+          variant="filed"
+          size="L"
+        />
+        <Button
+          {...args}
+          variant="filed"
+          rightIconType={IconType.Edit_20}
+          size="L"
+        />
+      </div>
+      <div style={{
+        display: 'flex', alignItems: 'end', gap: '20px', maxWidth: '700px',
+      }}
+      >
+        <Button
+          {...args}
+          variant="filed"
+          leftIconType={IconType.Edit_20}
+          rightIconType={IconType.Edit_20}
+          size="M"
+        />
+        <Button
+          {...args}
+          variant="filed"
+          leftIconType={IconType.Edit_20}
+          size="M"
+        />
+        <Button
+          {...args}
+          variant="filed"
+          size="M"
+        />
+        <Button
+          {...args}
+          variant="filed"
+          rightIconType={IconType.Edit_20}
           size="M"
         />
       </div>

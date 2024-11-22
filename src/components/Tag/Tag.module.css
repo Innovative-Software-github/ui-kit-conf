@@ -1,0 +1,23 @@
+.tagContainer {
+  display: flex;
+  font-size: 16px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  align-items: center;
+  cursor: pointer;
+  transition: 150ms ease;
+  border: 0px;
+  background-color: var(--conf-color-white);
+}
+
+.tagContainer:hover {
+  background-color: var(--conf-color-grey-1);
+}
+
+.tagContainer.selected {
+  background-color: var(--conf-color-cyan-7); 
+  color: var(--conf-color-white);
+  gap: 5px;
+  cursor: pointer;
+}
+

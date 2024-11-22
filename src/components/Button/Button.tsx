@@ -42,21 +42,32 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>((props, ref) =
     ...restProps
   } = props;
 
-  const renderLeftIcon = () => {
-    if (isLoading) {
-      return <Spinner className={cls.loadingSpinner} size="m" />;
-    }
+  const hasIcon = !!rightIconType || !!leftIconType;
 
-    return icon && <Icon width={20} height={20} type={leftIconType} className="iconIsLeft" />;
-  };
+  const spinner = (isLoading ? (
+    <Spinner className={clsx(cls.loadingSpinner)} size={size === 'M' ? 's' : undefined} />
+  ) : null
+  );
 
-  const renderRightIcon = () => {
-    if (isLoading) {
-      return <Spinner className={cls.loadingSpinner} size="m" />;
-    }
+  // eslint-disable-next-line max-len
+  const rightIcon = ((rightIconType && leftIconType && spinner) || (rightIconType && !leftIconType && spinner) || (rightIconType && (
+    <Icon
+      type={IconType.ArrowLeft_20}
+      data-size={size}
+      width={size === 'M' ? 14 : undefined}
+      className={clsx(cls.rightIcon)}
+    />
+  )));
 
-    return icon && <Icon width={20} height={20} type={rightIconType} className="iconIsRight" />;
-  };
+  const leftIcon = ((!hasIcon && spinner)
+  || (leftIconType && !rightIconType && spinner) || (leftIconType && (
+    <Icon
+      type={IconType.ArrowLeft_20}
+      data-size={size}
+      width={size === 'M' ? 14 : undefined}
+      className={clsx(cls.leftIcon)}
+    />
+  )));
 
   return (
     <button
@@ -72,9 +83,9 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>((props, ref) =
       onClick={onClick}
       disabled={isDisabled || isLoading}
     >
-      {renderLeftIcon()}
+      {leftIcon}
       {children}
-      {renderRightIcon()}
+      {rightIcon}
     </button>
   );
 });
