@@ -28,7 +28,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ariakit/react": "^0.4.13",
+    "@ariakit/react": "0.3.11",
     "autoprefixer": "^10.4.20",
     "clsx": "^2.1.1",
     "match-sorter": "^8.0.0",

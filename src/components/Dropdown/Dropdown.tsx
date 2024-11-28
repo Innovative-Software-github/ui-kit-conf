@@ -15,7 +15,7 @@ export interface IDropdownProps {
   optionIcon?: React.ReactNode;
   emptyContent?: string;
   dropdownClassName?: string;
-  onOptionClick: (option: ISelectOptions | ISelectOptions[]) => void;
+  onOptionClick: (option: ISelectOptions) => void;
 }
 
 /**

@@ -34,7 +34,7 @@ export interface IMultiSelect extends Omit<IInputProps, 'onChange' | 'value'> {
    * Дополнительный CSS-класс для выпадающего списка.
    */
   dropdownClassName?: string;
-  onOptionClick: (selectedOptions: ISelectOptions[]) => void;
+  onOptionClick: (options: ISelectOptions[]) => void;
 }
 
 /**
