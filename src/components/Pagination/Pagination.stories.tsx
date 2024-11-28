@@ -15,7 +15,7 @@ export const PaginationDefault: Story = {
   args: {
     currentPage: 1,
     handlePageChange: () => {},
-    itemsPerPage: 15,
+    itemsPerPage: 100,
     totalItems: 1000,
   },
   render: ({ totalItems, itemsPerPage }) => {
