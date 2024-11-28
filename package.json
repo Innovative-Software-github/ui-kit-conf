@@ -28,8 +28,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ariakit/react": "^0.4.13",
     "autoprefixer": "^10.4.20",
     "clsx": "^2.1.1",
+    "match-sorter": "^8.0.0",
     "postcss-preset-env": "^10.0.7"
   },
   "devDependencies": {
