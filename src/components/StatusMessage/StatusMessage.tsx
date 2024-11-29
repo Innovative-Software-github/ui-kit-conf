@@ -11,7 +11,7 @@ export interface IStatusMessageProps extends React.PropsWithChildren {
   type?: TStatusMessageVariant;
 }
 
-interface IStatusMessageComposition {
+export interface IStatusMessageComposition {
   Icon: typeof StatusMessageIcon;
 }
 
