@@ -1,96 +1,65 @@
 import React from 'react';
 
-import clsx from 'clsx';
+import { usePagination } from './utils';
+import { PaginationItem } from './PaginationItem/PaginationItem';
+import { PaginationButton } from './PaginationButton/PaginationButton';
+import { PaginationEllipsis } from './PaginationEllipsis/PaginationEllipsis';
 
-import { generatePagination } from './utils';
-import { Icon } from '../Icon/Icon';
-import { IconType } from '../Icon/IconsMapping';
-import clx from './Pagination.module.css';
+import cls from './Pagination.module.css';
 
 export interface IPaginationProps {
-  currentPage: number
-  itemsPerPage: number
-  totalItems: number
-  handlePageChange: (page: number | string) => void
+  count: number;
+  page: number;
+  siblingCount: number;
+  boundaryCount: number;
+  onChange: (page: number) => void
 }
 
 export const Pagination: React.FC<IPaginationProps> = (props) => {
   const {
-    currentPage,
-    handlePageChange,
-    itemsPerPage,
-    totalItems,
+    page,
+    count,
+    siblingCount = 1,
+    boundaryCount = 2,
+    onChange,
   } = props;
-  const { pages, totalPages } = React.useMemo(
-    () => generatePagination(totalItems, itemsPerPage, currentPage),
-    [currentPage, itemsPerPage, totalItems],
+  const items = React.useMemo(
+    () => usePagination({
+      count, page, siblingCount, boundaryCount,
+    }),
+    [count, page, siblingCount, boundaryCount],
   );
 
-  return (
-    <div className={clx.container}>
-      <button
-        className={clsx(clx.navigationButton, clx.backButton)}
-        disabled={currentPage === 1}
-        onClick={() => handlePageChange(currentPage - 1)}
-        type="button"
-      >
-        <Icon type={IconType.ArrowLeft_20} width={20} />
-        <span>Назад</span>
-      </button>
-      {pages.map((page) => {
-        if (page === 'ellipsis') {
-          return (
-            <>...</>
-          );
+  const renderPaginationItem = (item) => {
+    switch (typeof item) {
+      case 'number':
+        return <PaginationItem key={item} page={page} onClick={() => onChange(item)}>{item}</PaginationItem>;
+
+      case 'string':
+        switch (item) {
+          case 'previous':
+            return <PaginationButton key={item} variant={item} onClick={() => onChange(page - 1)} />;
+          case 'next':
+            return <PaginationButton key={item} variant={item} onClick={() => onChange(page + 1)} />;
+
+          case 'start-ellipsis':
+          case 'end-ellipsis':
+            return <PaginationEllipsis key={item} />;
+
+          default:
+            return null;
         }
 
-        return (
-          <button
-            className={clsx(clx.paginationButton, {
-              [clx.activePageButton]: page === currentPage,
-            })}
-            type="button"
-            key={page}
-            onClick={() => handlePageChange(page)}
-          >
-            {page}
-          </button>
-        );
-      })}
-      <button
-        type="button"
-        className={clsx(clx.navigationButton, clx.nextButton)}
-        disabled={currentPage === totalPages}
-        onClick={() => handlePageChange(currentPage + 1)}
-      >
-        <span>Дальше</span>
-        <Icon type={IconType.ArrowRight_20} width={20} />
-      </button>
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className={cls.pagination}>
+      {items.map((item) => renderPaginationItem(item))}
     </div>
   );
 };
 
 Pagination.displayName = 'Pagination';
-
-// {pages.map((page) => (typeof page === 'string' ? (
-//   <span className={clx.ellipsis} key={page}>
-//     {page}
-//   </span>
-// ) : (
-//   typeof page === 'number' && (
-//     <button
-//       type="button"
-//       className={
-//           page === currentPage
-//             ? clsx(clx.paginationButton, clx.activePageButton)
-//             : clx.paginationButton
-//         }
-//       key={page}
-//       onClick={() => handlePageChange(page)}
-//     >
-//       <span>
-//         {page}
-//       </span>
-//     </button>
-//   )
-// )))}

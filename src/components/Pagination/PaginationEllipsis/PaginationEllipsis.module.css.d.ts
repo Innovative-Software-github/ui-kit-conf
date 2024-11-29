@@ -1,5 +1,5 @@
 declare const cls: {
-  readonly pagination: string;
+  readonly ellipsis: string;
 };
 
 export = cls;

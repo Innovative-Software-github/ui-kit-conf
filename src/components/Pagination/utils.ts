@@ -1,63 +1,62 @@
-export const generatePagination = (
-  totalItems: number,
-  itemsPerPage: number,
-  currentPage: number,
-  maxVisiblePages = 7,
-) => {
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
+import { IPaginationProps } from './Pagination';
 
-  console.log(totalPages);
+export type IUsePaginationProps = Omit<IPaginationProps, 'onChange'>
+export type TUsePaginationReturn = (number | string)[];
 
-  if (totalPages <= 1) {
-    return { pages: [1], totalPages };
-  }
+export const usePagination = ({
+  count,
+  page,
+  siblingCount,
+  boundaryCount,
+}: IUsePaginationProps): TUsePaginationReturn => {
+  const range = (start, end) => {
+    const length = end - start + 1;
 
-  const pages: (number | string)[] = [];
+    return Array.from({ length }, (_, i) => start + i);
+  };
 
-  const half = Math.floor(maxVisiblePages / 2);
-  let start = currentPage - half;
-  let end = currentPage + half;
+  const startPages = range(1, Math.min(boundaryCount, count));
+  const endPages = range(Math.max(count - boundaryCount + 1, boundaryCount + 1), count);
 
-  if (start <= 1) {
-    start = 1;
-    end = maxVisiblePages;
-  }
+  const siblingsStart = Math.max(
+    Math.min(
+      page - siblingCount,
+      count - boundaryCount - siblingCount * 2 - 1,
+    ),
+    boundaryCount + 2,
+  );
 
-  if (end >= totalPages) {
-    start = totalPages - maxVisiblePages + 1;
-    end = totalPages;
-  }
+  const siblingsEnd = Math.min(
+    Math.max(
+      page + siblingCount,
+      boundaryCount + siblingCount * 2 + 2,
+    ),
+    count - boundaryCount - 1,
+  );
 
-  if (start < 1) {
-    start = 1;
-  }
+  const itemList = [
+    ...(['previous']),
+    ...startPages,
 
-  if (end > totalPages) {
-    end = totalPages;
-  }
+    // eslint-disable-next-line no-nested-ternary
+    ...(siblingsStart > boundaryCount + 2
+      ? ['start-ellipsis']
+      : boundaryCount + 1 < count - boundaryCount
+        ? [boundaryCount + 1]
+        : []),
 
-  const hasLeftEllipsis = start > 2;
-  const hasRightEllipsis = end < totalPages - 1;
+    ...range(siblingsStart, siblingsEnd),
 
-  pages.push(1);
+    // eslint-disable-next-line no-nested-ternary
+    ...(siblingsEnd < count - boundaryCount - 1
+      ? ['end-ellipsis']
+      : count - boundaryCount > boundaryCount
+        ? [count - boundaryCount]
+        : []),
 
-  if (hasLeftEllipsis) {
-    pages.push('ellipsis');
-  }
+    ...endPages,
+    ...(['next']),
+  ];
 
-  for (let i = start; i <= end; i += 1) {
-    if (i > 1 && i < totalPages) {
-      pages.push(i);
-    }
-  }
-
-  if (hasRightEllipsis) {
-    pages.push('ellipsis');
-  }
-
-  if (totalPages > 1) {
-    pages.push(totalPages);
-  }
-
-  return { pages, totalPages };
+  return itemList;
 };

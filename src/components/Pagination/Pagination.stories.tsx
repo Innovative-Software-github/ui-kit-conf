@@ -13,24 +13,29 @@ type Story = StoryObj<typeof meta>
 
 export const PaginationDefault: Story = {
   args: {
-    currentPage: 1,
-    handlePageChange: () => {},
-    itemsPerPage: 100,
-    totalItems: 1000,
+    page: 1,
+    count: 100,
+    siblingCount: 1,
+    boundaryCount: 2,
+    onChange: () => null,
   },
-  render: ({ totalItems, itemsPerPage }) => {
-    const [currentPage, setCurrentPage] = useState(1);
+  render: ({
+    page, count, siblingCount, boundaryCount,
+  }) => {
+    const [currentPage, setCurrentPage] = useState(page);
 
     const handlePageChangeInternal = (page: number) => {
+      console.log(page);
       setCurrentPage(page);
     };
 
     return (
       <Pagination
-        currentPage={currentPage}
-        handlePageChange={handlePageChangeInternal}
-        itemsPerPage={itemsPerPage}
-        totalItems={totalItems}
+        page={currentPage}
+        count={count}
+        siblingCount={siblingCount}
+        boundaryCount={boundaryCount}
+        onChange={handlePageChangeInternal}
       />
     );
   },
