@@ -1,0 +1,20 @@
+.button {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+
+  color: var(--conf-color-grey-7);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.button[data-side="previous"] {
+  margin-right: 24px;
+}
+
+.button[data-side="next"] {
+  margin-left: 24px;
+}
