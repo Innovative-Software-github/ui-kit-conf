@@ -2,22 +2,22 @@
   min-width: 367px;
 }
 
-.calendar {
+.wrapper .calendar {
   min-width: 367px;
   border: none;
   border-radius: 15px;
-  background-color: none !important;
-  padding: 16px 16px 0 16px;
+  background-color: var(--conf-color-white);
+  padding: 16px 16px 8px 16px;
   box-shadow: 0px 0px 12px 0px #0000001F;
   position: absolute;
   z-index: 1000000;
 }
 
-.input {
+.wrapper .input {
   margin-bottom: 8px;
 }
 
-.calendar :global(.react-datepicker__month-container) {
+.wrapper .calendar :global(.react-datepicker__month-container) {
   width: 100%;
 }
 
@@ -27,7 +27,7 @@
 
 /* Dates */
 
-.calendar :global(.react-datepicker__day) {
+.wrapper .calendar :global(.react-datepicker__day) {
   width: 29px;
   height: 24px;
   border-radius: 5px;
@@ -38,53 +38,53 @@
   vertical-align: middle;
 }
 
-.calendar :global(.react-datepicker__day):hover {
+.wrapper .calendar :global(.react-datepicker__day):hover {
   border-radius: 3px;
 }
 
-.calendar :global(.react-datepicker__day--disabled),
-.calendar :global(.react-datepicker__day.react-datepicker__day--outside-month),
-.calendar :global(.react-datepicker__day--today.react-datepicker__day--outside-month) {
+.wrapper .calendar :global(.react-datepicker__day--disabled),
+.wrapper .calendar :global(.react-datepicker__day.react-datepicker__day--outside-month),
+.wrapper .calendar :global(.react-datepicker__day--today.react-datepicker__day--outside-month) {
   border: none;
-  background-color: inherit;
+  background-color: var(--conf-color-cyan-7);
   pointer-events: none;
   color: var(--conf-color-white);
 }
 
-.calendar :global(.react-datepicker__day--in-range.react-datepicker__day--outside-month),
-.calendar :global(.react-datepicker__day--in-selecting-range.react-datepicker__day--outside-month) {
+.wrapper .calendar :global(.react-datepicker__day--in-range.react-datepicker__day--outside-month),
+.wrapper .calendar :global(.react-datepicker__day--in-selecting-range.react-datepicker__day--outside-month) {
   background-color: var(--conf-color-grey-1);
   pointer-events: none;
 }
 
-.calendar :global(.react-datepicker__day--selected.react-datepicker__day--outside-month),
-.calendar :global(.react-datepicker__day--range-start.react-datepicker__day--outside-month),
-.calendar :global(.react-datepicker__day--range-end.react-datepicker__day--outside-month) {
+.wrapper .calendar :global(.react-datepicker__day--selected.react-datepicker__day--outside-month),
+.wrapper .calendar :global(.react-datepicker__day--range-start.react-datepicker__day--outside-month),
+.wrapper .calendar :global(.react-datepicker__day--range-end.react-datepicker__day--outside-month) {
   background-color: var(--conf-color-cyan-7);
   color: var(--conf-color-white);
   pointer-events: none;
 }
 
-.calendar :global(.react-datepicker__day--today) {
+.wrapper .calendar :global(.react-datepicker__day--today) {
   font-weight: inherit;
 }
 
-.calendar :global(.react-datepicker__day--keyboard-selected) {
-  background-color: inherit;
+.wrapper .calendar :global(.react-datepicker__day--keyboard-selected) {
+  background-color: var(--conf-color-cyan-7);
 }
 
-.calendar :global(.react-datepicker__day--in-range),
-.calendar :global(.react-datepicker__day--in-selecting-range) {
+.wrapper .calendar :global(.react-datepicker__day--in-range),
+.wrapper .calendar :global(.react-datepicker__day--in-selecting-range) {
   background-color: var(--conf-color-grey-1);
   color: var(--conf-color-black);
 }
 
-.calendar :global(.react-datepicker__day--selected),
-.calendar :global(.react-datepicker__day--selected:hover)
-.calendar :global(.react-datepicker__day--range-start),
-.calendar :global(.react-datepicker__day--range-end),
-.calendar :global(.react-datepicker__day--selecting-range-start),
-.calendar :global(.react-datepicker__day--selecting-range-end) {
+.wrapper .calendar :global(.react-datepicker__day--selected),
+.wrapper .calendar :global(.react-datepicker__day--selected:hover)
+.wrapper .calendar :global(.react-datepicker__day--range-start),
+.wrapper .calendar :global(.react-datepicker__day--range-end),
+.wrapper .calendar :global(.react-datepicker__day--selecting-range-start),
+.wrapper .calendar :global(.react-datepicker__day--selecting-range-end) {
   background-color: var(--conf-color-cyan-7);
   color: var(--conf-color-white);
 }
@@ -93,7 +93,7 @@
 
 /* Weeks */
 
-.calendar :global(.react-datepicker__day-name) {
+.wrapper .calendar :global(.react-datepicker__day-name) {
   color: var(--conf-color-cyan-7);
   text-transform: uppercase;
   width: 23px;
@@ -101,12 +101,12 @@
   line-height: 16px;
 }
 
-.calendar :global(.react-datepicker__header.react-datepicker__header--custom) {
+.wrapper .calendar :global(.react-datepicker__header.react-datepicker__header--custom) {
   border: none;
   background-color: var(--conf-color-white);
 }
 
-.calendar :global(.react-datepicker__day-names) {
+.wrapper .calendar :global(.react-datepicker__day-names) {
   display: flex;
   justify-content: space-between;
   margin-bottom: 0;
@@ -114,22 +114,22 @@
 
 /* Weeks end */
 
-.calendar :global(.react-datepicker__week) {
+.wrapper .calendar :global(.react-datepicker__week) {
   display: flex;
   justify-content: space-between;
 }
 
-.calendar :global(.react-datepicker__day-names) {
+.wrapper .calendar :global(.react-datepicker__day-names) {
   display: flex;
   justify-content: space-between;
   margin-bottom: 0;
 }
 
-.calendar :global(.react-datepicker__day--disabled),
-.calendar :global(.react-datepicker__day.react-datepicker__day--outside-month),
-.calendar :global(.react-datepicker__day--today.react-datepicker__day--outside-month) {
+.wrapper .calendar :global(.react-datepicker__day--disabled),
+.wrapper .calendar :global(.react-datepicker__day.react-datepicker__day--outside-month),
+.wrapper .calendar :global(.react-datepicker__day--today.react-datepicker__day--outside-month) {
   border: none;
-  background-color: inherit;
+  background-color: var(--conf-color-white);
   pointer-events: none;
   color: var(--conf-color-grey-2);
 }
