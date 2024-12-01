@@ -11,3 +11,4 @@ export { Input } from './components/Input/Input';
 export { FieldWrapper } from './components/FieldWrapper/FieldWrapper';
 export { Dropdown } from './components/Dropdown/Dropdown';
 export { Pagination } from './components/Pagination/Pagination';
+export { Calendar } from './components/Calendar/Calendar';
