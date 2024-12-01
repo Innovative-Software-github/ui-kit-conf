@@ -52,7 +52,6 @@ export const Calendar: React.FC<ICalendar> = ({
       <Input
         className={cls.input}
         value={formatDateRange(startDate, endDate)}
-        readOnly
         placeholder="Выберите дату"
         onMouseDown={handleInputClick}
         onKeyDown={handleKeyDown}
