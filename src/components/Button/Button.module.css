@@ -1,0 +1,103 @@
+.button {
+  display: flex;
+  gap: 8px;
+  transition: 150ms;
+
+  border-radius: 18px;
+  border: none;
+
+  cursor: pointer;
+
+  font-weight: 400;
+}
+
+.button[data-size="M"] {
+  padding: 12px 14px;
+  font-size: 14px;
+  border-radius: 14px;
+}
+.button:has(.leftIcon)[data-size="M"],
+.button:has(.rightIcon)[data-size="M"] {
+  padding: 11px 14px;
+  font-size: 14px;
+  border-radius: 14px;
+}
+
+.button[data-size="L"] {
+  padding: 14px 20px;
+  font-size: 16px;
+}
+.button:has(.leftIcon)[data-size="L"],
+.button:has(.rightIcon)[data-size="L"]{
+  padding: 13px 20px;
+  font-size: 16px;
+}
+
+.loadingSpinner {
+  color: var(--conf-color-cyan-7);
+}
+
+.button[data-variant='filed'] {
+  color: var(--conf-color-white);
+  background-color: var(--conf-color-cyan-7);
+}
+
+.button:has(.loadingSpinner){
+  padding: 15px 20px;
+}
+
+.button.loading[data-variant='filed'],
+.button.disable[data-variant='filed'] {
+  background-color: var(--conf-color-cyan-2);
+  color: var(--conf-color-cyan-4);
+}
+
+.button[data-variant='filed']:hover {
+  background-color: var(--conf-color-cyan-8);
+}
+
+.button[data-variant='filed']:active {
+  background-color: var(--conf-color-cyan-9);
+}
+
+.button[data-variant='outlined'] {
+  color: var(--conf-color-black);
+  background-color: var(--conf-color-white);
+
+  border: 2px solid var(--conf-color-cyan-7);
+}
+
+.button[data-variant='outlined']:hover {
+  background-color: var(--conf-color-cyan-2);
+}
+
+.button[data-variant='outlined']:active {
+  background-color: var(--conf-color-cyan-3);
+}
+
+.button.loading[data-variant='outlined'],
+.button.disable[data-variant='outlined'] {
+  background-color: var(--conf-color-cyan-2);
+  color: var(--conf-color-cyan-4);
+  border-color: var(--conf-color-cyan-4);
+}
+
+.button[data-variant='text'] {
+  border: none;
+  background: none;
+  padding: 0px;
+  color: var(--conf-color-black);
+}
+
+.button[data-variant='text']:hover {
+  color: var(--conf-color-cyan-7);
+}
+
+.button[data-variant='text']:active {
+  color: var(--conf-color-cyan-6);
+}
+
+.button.loading[data-variant='text'],
+.button.disable[data-variant='text'] {
+  color: var(--conf-color-cyan-4);
+}
