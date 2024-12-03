@@ -11,12 +11,14 @@ type Story = StoryObj<typeof Tag>;
 
 export const StaticTagStory: Story = {
   args: {
+    type: 'static',
     label: 'Static tag',
   },
 };
 
 export const RemovableTagStory: Story = {
   args: {
+    type: 'removable',
     selectable: false,
     active: true,
     removable: true,
@@ -27,7 +29,8 @@ export const RemovableTagStory: Story = {
 
 export const SelectableTagStory: Story = {
   args: {
-    selectable: false,
+    type: 'selectable',
+    selectable: true,
     onActiveChange: (active) => console.log(active),
     label: 'Selectable tag',
   },

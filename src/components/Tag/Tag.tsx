@@ -3,12 +3,14 @@ import clsx from 'clsx';
 import cls from './Tag.module.css';
 import { Icon } from '../Icon/Icon';
 import { IconType } from '../Icon/IconsMapping';
+import SelectableTag from './SelectableTag';
 
-interface ITagProps {
+export interface ITagProps {
+  type: 'static' | 'selectable' | 'removable';
   selectable?: boolean;
   active?: boolean;
   removable?: boolean;
-  onActiveChange?: () => void;
+  onActiveChange?: (active: boolean) => void;
   onRemove?: () => void;
   label: string;
 }
@@ -20,20 +22,24 @@ const Tag = ({
   onActiveChange,
   onRemove,
   label,
-}): React.JSX.Element => {
+  type,
+}: ITagProps) => {
 
   const [isActive, setIsActive] = useState(active);
   const isRemovableTag = (): boolean => removable && active;
   const isStaticTag = (): boolean => !removable && !selectable;
 
   const onSelectableTagChange = () => {
-    setIsActive(!isActive);
-    if (onActiveChange) onActiveChange();
+    const newActiveStatus = !isActive;
+
+    setIsActive(newActiveStatus);
+    if (onActiveChange) onActiveChange(newActiveStatus);
   };
 
   return (
     <>
-      {selectable && <div className={clsx(cls.tagStatic, cls.tagSelectable, { [cls.tagActive]: isActive })} onClick={() => onSelectableTagChange()}>{label}</div>}
+      {type === 'selectable'
+        && <SelectableTag label={label} active={active} onChange={(active) => onActiveChange(active)} />}
       {isRemovableTag()
         &&
         <div className={clsx([cls.tagRemovable, cls.tagStatic, cls.tagActive])}>
