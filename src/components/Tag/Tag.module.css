@@ -1,0 +1,19 @@
+.tagStatic {
+    width: fit-content;
+    border: 1px solid var(--conf-color-grey-2);
+    color: var(--conf-color-grey-7);
+    border-radius: 10px;
+    font-weight: 400;
+    padding: 4px 12px;
+    text-align: center;
+}
+
+.tagActive {
+    color: var(--conf-color-white);
+    border-color: unset;
+    background-color: var(--conf-color-cyan-7);
+}
+
+.tagSelectable {
+    cursor: pointer;
+}
