@@ -12,10 +12,10 @@ const SelectableTag = ({ active, onChange, label } : ISelectableTagProps) => {
   const [isActive, setIsActive] = useState(active);
 
   const onSelectableTagChange = () => {
-    const newActive = !active;
+    const newActive = !isActive;
 
     setIsActive(newActive);
-    onChange(newActive);
+    if (onChange) onChange(newActive);
   };
 
   return (

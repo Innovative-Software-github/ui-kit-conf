@@ -19,9 +19,6 @@ export const StaticTagStory: Story = {
 export const RemovableTagStory: Story = {
   args: {
     type: 'removable',
-    selectable: false,
-    active: true,
-    removable: true,
     onRemove: () => console.log('remove this tag from list of tags e.g.'),
     label: 'Removable tag',
   },
@@ -30,7 +27,6 @@ export const RemovableTagStory: Story = {
 export const SelectableTagStory: Story = {
   args: {
     type: 'selectable',
-    selectable: true,
     onActiveChange: (active) => console.log(active),
     label: 'Selectable tag',
   },
