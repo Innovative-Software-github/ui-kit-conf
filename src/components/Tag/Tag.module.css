@@ -16,4 +16,10 @@
 
 .tagSelectable {
     cursor: pointer;
+    user-select: none;
+}
+
+.tagRemovable {
+    display: flex;
+    gap: 4px;
 }

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import cls from './Tag.module.css';
+import { Icon } from '../Icon/Icon';
+import { IconType } from '../Icon/IconsMapping';
 
 interface ITagProps {
   selectable?: boolean;
@@ -31,9 +33,15 @@ const Tag = ({
 
   return (
     <>
-      {selectable && <div className={clsx(cls.tagStatic, cls.tagSelectable, { [cls.tagActive]: isActive })} onClick={() => onSelectableTagChange()}>Selectable Tag</div>}
-      {isRemovableTag() && <div className={clsx([cls.tagStatic, cls.tagActive])} onClick={onRemove()}>Removable tag</div>}
-      {isStaticTag() && <div className={clsx(cls.tagStatic)}>Static Tag</div>}
+      {selectable && <div className={clsx(cls.tagStatic, cls.tagSelectable, { [cls.tagActive]: isActive })} onClick={() => onSelectableTagChange()}>{label}</div>}
+      {isRemovableTag()
+        &&
+        <div className={clsx([cls.tagRemovable, cls.tagStatic, cls.tagActive])}>
+          <span>{label}</span>
+          <Icon type={IconType.Close_20} onClick={() => onRemove()} />
+        </div>
+      }
+      {isStaticTag() && <div className={clsx(cls.tagStatic)}>{label}</div>}
     </>
   );
 };

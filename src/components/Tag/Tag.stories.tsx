@@ -10,6 +10,9 @@ export default meta;
 type Story = StoryObj<typeof Tag>;
 
 export const StaticTagStory: Story = {
+  args: {
+    label: 'Static tag',
+  },
 };
 
 export const RemovableTagStory: Story = {
@@ -17,14 +20,15 @@ export const RemovableTagStory: Story = {
     selectable: false,
     active: true,
     removable: true,
-    onRemove: () => undefined,
+    onRemove: () => console.log('remove this tag from list of tags e.g.'),
+    label: 'Removable tag',
   },
 };
 
 export const SelectableTagStory: Story = {
   args: {
     selectable: false,
-    onActiveChange: () => undefined,
-    active: {}
+    onActiveChange: (active) => console.log(active),
+    label: 'Selectable tag',
   },
 };
