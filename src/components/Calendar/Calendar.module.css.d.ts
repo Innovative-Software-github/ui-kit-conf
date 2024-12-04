@@ -5,7 +5,6 @@ declare const cls: {
   readonly weekDay: string;
   readonly datepicker: string;
   readonly day: string;
-  readonly day: string;
 };
 
 export = cls;
