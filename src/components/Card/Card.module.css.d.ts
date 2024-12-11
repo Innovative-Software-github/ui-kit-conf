@@ -1,9 +1,9 @@
 declare const cls: {
   readonly container: string;
-  readonly checkbox: string;
-  readonly label: string;
-  readonly disabled: string;
-  readonly checked: string;
+  readonly photos: string;
+  readonly title: string;
+  readonly tagsGroup: string;
+  readonly tag: string;
 };
 
 export = cls;
