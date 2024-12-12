@@ -4,6 +4,7 @@
   align-items: center;
   gap: 8px;
 
+  background-color: var(--conf-color-white);
   border: 1px solid var(--conf-color-grey-4);
   border-radius: 14px;
 

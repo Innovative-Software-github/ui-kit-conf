@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px 20px 8px;
+}
+
+.contolButtons {
+  display: flex;
+  gap: 14px;
+}
+
+.monthButton,
+.yearButton,
+.prevButton,
+.nextButton {
+  all: unset;
+}
+
+.prevButton,
+.nextButton {
+  cursor: pointer;
+}
+.monthButton {
+  margin-right: 10px;
+}
