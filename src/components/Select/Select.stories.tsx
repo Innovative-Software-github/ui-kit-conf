@@ -24,7 +24,7 @@ export default meta;
 export const SelectStory = (args) => {
   const [selectedOption, setSelectedOption] = React.useState<ISelectOptions>();
 
-  const handleInputChange = (option: any) => setSelectedOption(option);
+  console.log(selectedOption);
 
   const handleOptionClick = (option: ISelectOptions) => setSelectedOption(option);
 
@@ -41,36 +41,6 @@ export const SelectStory = (args) => {
           backgroundColor: '#f0f2f5',
         }}
       >
-        <div
-          style={{
-            maxWidth: '300px',
-            backgroundColor: '#fff',
-            padding: '20px',
-            borderRadius: '8px',
-            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-          }}
-        >
-          <h3
-            style={{
-              marginBottom: '15px',
-              textAlign: 'center',
-              color: '#1890ff',
-              fontFamily: 'Arial, sans-serif',
-            }}
-          >
-            Поиск влияет на значение
-          </h3>
-          <Select
-            {...args}
-            options={List}
-            selectedOption={selectedOption}
-            emptyContent="Не найдено"
-            onOptionClick={handleOptionClick}
-            onInputChange={handleInputChange}
-            placeholder="Выберите опцию"
-          />
-        </div>
-
         <div
           style={{
             maxWidth: '300px',
