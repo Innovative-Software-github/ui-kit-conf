@@ -1,0 +1,13 @@
+.comboCheckbox {
+  display: inline-block;
+  width: fit-content;
+}
+
+.comboCheckbox input {
+  display: none;
+}
+
+.tag {
+  cursor: pointer;
+  user-select: none;
+}

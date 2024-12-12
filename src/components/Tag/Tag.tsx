@@ -1,34 +1,35 @@
 import React from 'react';
 import clsx from 'clsx';
-import cls from './Tag.module.css';
-import SelectableTag from './SelectableTag';
-import RemovableTag from './RemovableTag';
 
-export interface ITagProps {
-  type: 'static' | 'selectable' | 'removable';
-  active?: boolean;
-  onActiveChange?: (active: boolean) => void;
-  onRemove?: () => void;
-  label: string;
+import { Icon } from '../Icon/Icon';
+import { IconType } from '../Icon/IconsMapping';
+
+import cls from './Tag.module.css';
+
+export type TTagsVariants = 'default' | 'selected';
+
+export interface ITagProps extends React.PropsWithChildren {
+  type: TTagsVariants;
+  className?: string;
 }
 
-const Tag = ({
-  active = false,
-  onActiveChange,
-  onRemove,
-  label,
-  type,
-}: ITagProps) => {
+export const Tag = React.forwardRef<HTMLDivElement, ITagProps>(
+  ({ type, className, children }, ref) => {
+    const closeButton = type === 'selected' && (
+      <Icon type={IconType.Close_20} width={20} height={20} />
+    );
 
-  return (
-    <>
-      {type === 'selectable'
-        && <SelectableTag label={label} active={active} onChange={onActiveChange} />}
-      {type === 'removable'
-        && <RemovableTag label={label} onRemove={onRemove} />}
-      {type === 'static' && <div className={clsx(cls.tagStatic)}>{label}</div>}
-    </>
-  );
-};
+    return (
+      <div
+        ref={ref}
+        className={clsx(cls.tag, className)}
+        data-variant={type}
+      >
+        {children}
+        {closeButton}
+      </div>
+    );
+  },
+);
 
-export default Tag;
+Tag.displayName = 'Tag';
