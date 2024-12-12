@@ -42,15 +42,11 @@ export interface ISelectProps extends Omit<IInputProps, 'onChange' | 'value'> {
  *
  * **Состояния компонента:**
  *
- * 1. **С использованием `onInputChange`:**<br/>
- *    Когда передается `onInputChange`, введенные значения учитываются как `{ value, key: undefined }`.
- *    Поле ввода активно и позволяет вводить произвольные значения, которые можно обработать через `onInputChange`.
- *
- * 2. **Без `onInputChange`:**<br/>
+ * 1. **Без `onInputChange`:**<br/>
  *    Если `onInputChange` не передан, поле ввода используется только для фильтрации доступных опций.
  *    Пользовательский ввод не обрабатывается, выбор осуществляется из списка фильтрованных опций.
  *
- * 3. **Свойство `isInputReadOnly`:**<br/>
+ * 2. **Свойство `isInputReadOnly`:**<br/>
  *    Если `isInputReadOnly` установлено в `true`, поле ввода отключено и находится в режиме только для чтения.
  *    Пользователь не может вводить значения, выбор доступен только из предоставленного списка опций.
  *
@@ -68,7 +64,7 @@ export const Select:React.FC<ISelectProps> = ({
   onOptionClick,
   ...inputProps
 }) => {
-  const [inputValue, setInputValue] = React.useState('');
+  const [inputValue, setInputValue] = React.useState(selectedOption?.value || '');
 
   const isUncontrolledInput = !isInputReadOnly && !onInputChange;
 
