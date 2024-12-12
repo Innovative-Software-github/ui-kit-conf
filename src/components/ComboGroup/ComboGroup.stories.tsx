@@ -36,7 +36,7 @@ export const StaticComboGroupStory = () => {
   };
 
   return (
-    <ComboGroup defaultIds={selected} onChange={handleChange}>
+    <ComboGroup isSorted defaultIds={selected} onChange={handleChange}>
       {options.map((option) => (
         <ComboGroup.Checkbox key={option.id} id={option.id}>
           {option.name}

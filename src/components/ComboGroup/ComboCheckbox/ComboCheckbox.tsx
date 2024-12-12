@@ -37,7 +37,6 @@ export const ComboCheckbox = React.forwardRef<HTMLLabelElement, IComboCheckboxPr
           type="checkbox"
           checked={isChecked}
           onChange={handleChange}
-          className={cls.checkbox}
           {...restProps}
         />
         <Tag className={cls.tag} type={isChecked ? 'selected' : 'default'}>
