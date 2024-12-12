@@ -22,25 +22,25 @@ export const InputVariations: Story = {
       >
         <Button
           {...args}
-          variant="filed"
+          variant="default"
           leftIconType={IconType.ArrowDown_20}
           rightIconType={IconType.Edit_20}
           size="L"
         />
         <Button
           {...args}
-          variant="filed"
-          leftIconType={IconType.ArrowDown_20}
+          variant="default"
+          leftIconType={IconType.Edit_20}
           size="L"
         />
         <Button
           {...args}
-          variant="filed"
+          variant="default"
           size="L"
         />
         <Button
           {...args}
-          variant="filed"
+          variant="default"
           rightIconType={IconType.Edit_20}
           size="L"
         />
@@ -51,25 +51,25 @@ export const InputVariations: Story = {
       >
         <Button
           {...args}
-          variant="filed"
+          variant="default"
           leftIconType={IconType.Edit_20}
           rightIconType={IconType.Edit_20}
           size="M"
         />
         <Button
           {...args}
-          variant="filed"
+          variant="default"
           leftIconType={IconType.Edit_20}
           size="M"
         />
         <Button
           {...args}
-          variant="filed"
+          variant="default"
           size="M"
         />
         <Button
           {...args}
-          variant="filed"
+          variant="default"
           rightIconType={IconType.Edit_20}
           size="M"
         />
@@ -80,12 +80,12 @@ export const InputVariations: Story = {
       >
         <Button
           {...args}
-          variant="filed"
+          variant="default"
           size="L"
         />
         <Button
           {...args}
-          variant="filed"
+          variant="default"
           size="M"
         />
       </div>
@@ -96,13 +96,13 @@ export const InputVariations: Story = {
         <Button
           {...args}
           variant="outlined"
-          icon={IconType.Edit_20}
+          leftIconType={IconType.Edit_20}
           size="L"
         />
         <Button
           {...args}
           variant="outlined"
-          icon={IconType.Edit_20}
+          rightIconType={IconType.Edit_20}
           size="M"
         />
       </div>
@@ -128,13 +128,13 @@ export const InputVariations: Story = {
         <Button
           {...args}
           variant="text"
-          icon={IconType.Edit_20}
+          leftIconType={IconType.Edit_20}
           size="L"
         />
         <Button
           {...args}
           variant="text"
-          icon={IconType.Edit_20}
+          rightIconType={IconType.Edit_20}
           size="M"
         />
       </div>
@@ -143,6 +143,6 @@ export const InputVariations: Story = {
   args: {
     isLoading: false,
     isDisabled: false,
-    children: 'press',
+    children: 'Зарегистрироваться',
   },
 };

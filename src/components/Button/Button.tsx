@@ -1,6 +1,6 @@
-/* eslint-disable react/button-has-type */
 import React, { forwardRef } from 'react';
 import { clsx } from 'clsx';
+
 import { IconType } from '../Icon/IconsMapping';
 import { Icon } from '../Icon/Icon';
 import { Spinner } from '../Spinner/Spinner';
@@ -9,18 +9,17 @@ import cls from './Button.module.css';
 
 const DISPLAY_NAME = 'Button';
 
-export type TButtonType = 'button' | 'submit' | 'reset';
 export type TButtonSize = 'M' | 'L';
-export type TButtonVariant = 'filed' | 'outlined' | 'text';
-export interface IButtonProps extends React.ReactNode<HTMLButtonElement> {
-  children?: string;
+export type TButtonVariant = 'default' | 'outlined' | 'text';
+
+type TButtonHTMLAttributes = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'>
+
+export interface IButtonProps extends TButtonHTMLAttributes, React.PropsWithChildren {
   className?: string;
   variant: TButtonVariant;
-  icon?: IconType;
+  size?: TButtonSize;
   isLoading?: boolean;
   isDisabled?: boolean;
-  type?: TButtonType;
-  size?: TButtonSize;
   leftIconType?: IconType;
   rightIconType?: IconType
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -30,12 +29,10 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>((props, ref) =
   const {
     children,
     className,
-    icon,
     isLoading,
     isDisabled,
-    variant = 'filed',
+    variant = 'default',
     size = 'L',
-    type = 'button',
     rightIconType,
     leftIconType,
     onClick,
@@ -45,43 +42,44 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>((props, ref) =
   const hasIcon = !!rightIconType || !!leftIconType;
 
   const spinner = (isLoading ? (
-    <Spinner className={clsx(cls.loadingSpinner)} size={size === 'M' ? 's' : undefined} />
+    <Spinner className={cls.spinner} size={size === 'M' ? 's' : 'm'} />
   ) : null
   );
 
-  // eslint-disable-next-line max-len
-  const rightIcon = ((rightIconType && leftIconType && spinner) || (rightIconType && !leftIconType && spinner) || (rightIconType && (
+  const rightIcon = ((rightIconType && leftIconType && spinner)
+  || (rightIconType && !leftIconType && spinner)
+  || (rightIconType && (
     <Icon
-      type={IconType.ArrowLeft_20}
+      type={rightIconType}
       data-size={size}
-      width={size === 'M' ? 14 : undefined}
-      className={clsx(cls.rightIcon)}
+      width={20}
+      height={20}
+      className={cls.icon}
     />
   )));
 
   const leftIcon = ((!hasIcon && spinner)
-  || (leftIconType && !rightIconType && spinner) || (leftIconType && (
+  || (leftIconType && !rightIconType && spinner)
+  || (leftIconType && (
     <Icon
-      type={IconType.ArrowLeft_20}
+      type={leftIconType}
       data-size={size}
-      width={size === 'M' ? 14 : undefined}
-      className={clsx(cls.leftIcon)}
+      width={20}
+      height={20}
+      className={cls.icon}
     />
   )));
 
   return (
     <button
-      className={clsx(cls.button, className, {
-        [cls.loading]: isLoading,
-        [cls.disable]: isDisabled,
-      })}
+      type="button"
       {...restProps}
+      className={clsx(cls.button, className)}
       ref={ref}
       data-variant={variant}
       data-size={size}
-      type={type}
-      onClick={onClick}
       disabled={isDisabled || isLoading}
+      onClick={onClick}
     >
       {leftIcon}
       {children}

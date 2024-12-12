@@ -1,103 +1,96 @@
 .button {
+  box-sizing: border-box;
   display: flex;
+  align-items: center;
   gap: 8px;
-  transition: 150ms;
 
-  border-radius: 18px;
   border: none;
+  outline: none;
 
+  padding: 14px 20px;
+  border-radius: 18px;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+
+  transition: 0.15s ease;
   cursor: pointer;
-
-  font-weight: 400;
 }
 
 .button[data-size="M"] {
-  padding: 12px 14px;
-  font-size: 14px;
+  padding: 12px 20px;
   border-radius: 14px;
-}
-.button:has(.leftIcon)[data-size="M"],
-.button:has(.rightIcon)[data-size="M"] {
-  padding: 11px 14px;
+
   font-size: 14px;
-  border-radius: 14px;
+  font-weight: 500;
+  line-height: 20px;
 }
 
-.button[data-size="L"] {
-  padding: 14px 20px;
-  font-size: 16px;
-}
-.button:has(.leftIcon)[data-size="L"],
-.button:has(.rightIcon)[data-size="L"]{
-  padding: 13px 20px;
-  font-size: 16px;
+.button:disabled {
+  cursor: default;
 }
 
-.loadingSpinner {
-  color: var(--conf-color-cyan-7);
-}
-
-.button[data-variant='filed'] {
-  color: var(--conf-color-white);
+/* default variant start */
+.button[data-variant="default"] {
   background-color: var(--conf-color-cyan-7);
+  color: var(--conf-color-white);
 }
 
-.button:has(.loadingSpinner){
-  padding: 15px 20px;
-}
-
-.button.loading[data-variant='filed'],
-.button.disable[data-variant='filed'] {
-  background-color: var(--conf-color-cyan-2);
-  color: var(--conf-color-cyan-4);
-}
-
-.button[data-variant='filed']:hover {
+.button[data-variant="default"]:hover {
   background-color: var(--conf-color-cyan-8);
 }
 
-.button[data-variant='filed']:active {
+.button[data-variant="default"]:active {
   background-color: var(--conf-color-cyan-9);
 }
 
-.button[data-variant='outlined'] {
-  color: var(--conf-color-black);
-  background-color: var(--conf-color-white);
+.button[data-variant="default"]:disabled {
+  background-color: var(--conf-color-cyan-2);
+  color: var(--conf-color-cyan-4);
+}
+/* default variant end */
 
-  border: 2px solid var(--conf-color-cyan-7);
+/* outlined variant start */
+.button[data-variant="outlined"] {
+  border: 2px var(--conf-color-cyan-7) solid; 
+  background-color: var(--conf-color-white);
+  color: var(--conf-color-black);
 }
 
-.button[data-variant='outlined']:hover {
+.button[data-variant="outlined"]:hover {
   background-color: var(--conf-color-cyan-2);
 }
 
-.button[data-variant='outlined']:active {
+.button[data-variant="outlined"]:active {
   background-color: var(--conf-color-cyan-3);
 }
 
-.button.loading[data-variant='outlined'],
-.button.disable[data-variant='outlined'] {
+.button[data-variant="outlined"]:disabled {
+  border-color: var(--conf-color-cyan-4);
   background-color: var(--conf-color-cyan-2);
   color: var(--conf-color-cyan-4);
-  border-color: var(--conf-color-cyan-4);
 }
+/* outlined variant end */
 
-.button[data-variant='text'] {
-  border: none;
+/* text variant start */
+.button[data-variant="text"] {
   background: none;
-  padding: 0px;
-  color: var(--conf-color-black);
 }
 
-.button[data-variant='text']:hover {
-  color: var(--conf-color-cyan-7);
+.button[data-variant="text"]:hover {
+  color: var(--conf-color-cyan-8);
 }
 
-.button[data-variant='text']:active {
-  color: var(--conf-color-cyan-6);
+.button[data-variant="text"]:active {
+  color: var(--conf-color-cyan-9);
 }
 
-.button.loading[data-variant='text'],
-.button.disable[data-variant='text'] {
+.button[data-variant="text"]:disabled {
   color: var(--conf-color-cyan-4);
+}
+/* text variant end */
+
+.spinner {
+  color: var(--conf-color-cyan-7);
 }

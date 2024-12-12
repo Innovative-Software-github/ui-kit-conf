@@ -1,7 +1,7 @@
 declare const cls: {
-  [x: string]: ClassValue;
-  readonly filed: string;
-  readonly outlined: string;
+  readonly button: string;
+  readonly spinner: string;
+  readonly icon: string;
   readonly text: string;
 };
 
