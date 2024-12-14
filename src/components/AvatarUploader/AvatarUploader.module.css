@@ -1,0 +1,50 @@
+img {
+  width: 220px;
+  height: 141px;
+  display: flex;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed var(--conf-color-grey-5);
+  background-color: var(--conf-color-grey-1);
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  height: 140px;
+  max-width: 220px;
+}
+
+.preview {
+  width: 220px;
+  height: 141px;
+  cursor: default;
+}
+
+svg {
+  color: var(--conf-color-grey-3);
+}
+
+.container:hover {
+  background-color: var(--conf-color-grey-2);
+  transition: background 150ms ease;
+}
+
+.clearButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px;
+  background: transparent;
+  background-color: var(--conf-color-white-1); /* я хз как тут задний фон вывести поверх картинки, через z-index пробовал */
+  border: 1px solid var(--conf-color-grey-3);
+  border-radius: 30px ;
+  cursor: pointer; /* там короче если без этого, то на границе кнопки и картинки курсор пропадает */
+}
+
+.inputImg {
+  display: none;
+}
