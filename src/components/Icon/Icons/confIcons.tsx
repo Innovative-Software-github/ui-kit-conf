@@ -102,3 +102,10 @@ export const Plus_20 = (
     <path d="M9.633 11.183h-5V9.517h5v-5H11.3v5h5v1.666h-5v5H9.633z" fill="currentColor" />
   </svg>
 );
+
+export const Logotype = (
+  <svg width="135" height="16" viewBox="0 0 135 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 15.5V.5h9v3H3v3h6v3H3v3h6v3zm21 0v-3h-3v-6h-3v-6h3v6h3v6h3v3zm6-9v-6h3v6zm-3 6v-6h3v6zm12 3V.5h9v3h-6v3h6v3h-6v3h6v3zm15 0V.5h3v3h3v3h3v3h3v-9h3v15h-3v-3h-3v-3h-3v-3h-3v9zm24 0v-12h-3v-3h9v3h-3v12z" fill="#454545" />
+    <path d="M87 15.5V.5h3v6h6v-6h3v15h-3v-6h-6v6zm21 0v-3h-3V.5h3v12h6v3zm6-3V.5h3v12zm9 3V.5h9v3h3v9h-3v3zm3-9h5.88v-3H126zm0 6h5.88v-3H126z" fill="#11C5BA" />
+  </svg>
+);

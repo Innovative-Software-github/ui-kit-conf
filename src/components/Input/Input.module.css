@@ -5,7 +5,7 @@
   gap: 8px;
 
   background-color: var(--conf-color-white);
-  border: 1px solid var(--conf-color-grey-4);
+  border: 1px solid var(--conf-color-grey-2);
   border-radius: 14px;
 
   overflow: hidden;
@@ -47,15 +47,15 @@
 }
 
 .input::placeholder {
-  color: var(--conf-color-grey-4);
+  color: var(--conf-color-grey-3);
 }
 
 .container:hover {
-  border: 1px solid var(--conf-color-grey-5);
+  border: 1px solid var(--conf-color-grey-3);
 }
 
 .container:hover .input::placeholder {
-  color: var(--conf-color-grey-5);
+  color: var(--conf-color-grey-3);
 }
 
 .container:focus-within {
@@ -77,7 +77,7 @@
 .container.loading,
 .container.loading .input,
 .container.loading .input::placeholder {
-  color: var(--conf-color-grey-2);
+  color: var(--conf-color-grey-4);
 }
 
 .container.disable,
