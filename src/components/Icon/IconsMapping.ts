@@ -18,6 +18,7 @@ export enum IconType {
   Done_20 = 'Done_20',
   Location_20 = 'Location_20',
   Plus_20 = 'Plus_20',
+  Search_20 = 'Search_20',
   Logotype = 'Logotype',
 }
 
@@ -39,5 +40,6 @@ export const iconToComponent: Record<IconType, JSX.Element> = {
   [IconType.Done_20]: confIcon.Done_20,
   [IconType.Location_20]: confIcon.Location_20,
   [IconType.Plus_20]: confIcon.Plus_20,
+  [IconType.Search_20]: confIcon.Search_20,
   [IconType.Logotype]: confIcon.Logotype,
 };
