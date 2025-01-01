@@ -16,6 +16,7 @@
     "compile:code": "rollup --config rollup.config.js",
     "compile:types": "tsc --p tsconfig.types.json",
     "checkTypes": "tsc --p tsconfig.types.json",
+    "pub-beta": "npm run build && npm version prerelease --preid=beta && npm publish --tag beta",
     "pub-patch": "npm run build && npm version patch && npm publish",
     "pub-minor": "npm run build && npm version minor && npm publish",
     "pub-major": "npm run build && npm version major && npm publish",

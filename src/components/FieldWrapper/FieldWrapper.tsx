@@ -21,6 +21,7 @@ interface IFieldWrapperProps {
   iconWidth?: number;
   iconHeight?: number;
   className?: string;
+  animateText?: boolean;
 }
 
 const DISPLAY_NAME = 'FieldWrapper';
@@ -36,7 +37,27 @@ export const FieldWrapper: React.FC<IFieldWrapperProps> = (props) => {
     iconWidth,
     iconHeight,
     size = 'M',
+    animateText = false,
   } = props;
+
+  const [isTextVisible, setIsTextVisible] = React.useState(!!text);
+
+  // eslint-disable-next-line consistent-return
+  React.useEffect(() => {
+    if (animateText) {
+      if (text) {
+        setIsTextVisible(true);
+      } else {
+        const timer = setTimeout(() => {
+          setIsTextVisible(false);
+        }, 300);
+
+        return () => clearTimeout(timer);
+      }
+    } else {
+      setIsTextVisible(!!text);
+    }
+  }, [text, animateText]);
 
   const getStatusMessageContent = () => text || '';
 
@@ -49,29 +70,54 @@ export const FieldWrapper: React.FC<IFieldWrapperProps> = (props) => {
       data-type={type}
     >
       {label && (
-      <StatusMessage
-        className={cls.label}
-        type={type === 'error' ? 'error' : 'info'}
-      >
-        {label}
-      </StatusMessage>
-      )}
-      {children}
-      {messageContent && (
         <StatusMessage
-          className={cls.statusMessage}
+          className={cls.label}
           type={type === 'error' ? 'error' : 'info'}
         >
-          {icon && (
-          <StatusMessageIcon
-            className={cls.icon}
-            type={icon}
-            width={iconWidth}
-            height={iconHeight}
-          />
-          )}
-          {messageContent}
+          {label}
         </StatusMessage>
+      )}
+      {children}
+      {animateText ? (
+        <div
+          className={clsx(cls.statusMessageWrapper, {
+            [cls.visible]: !!text,
+          })}
+        >
+          {isTextVisible && (
+            <StatusMessage
+              className={cls.statusMessage}
+              type={type === 'error' ? 'error' : 'info'}
+            >
+              {icon && (
+                <StatusMessageIcon
+                  className={cls.icon}
+                  type={icon}
+                  width={iconWidth}
+                  height={iconHeight}
+                />
+              )}
+              {messageContent}
+            </StatusMessage>
+          )}
+        </div>
+      ) : (
+        messageContent && (
+          <StatusMessage
+            className={cls.statusMessage}
+            type={type === 'error' ? 'error' : 'info'}
+          >
+            {icon && (
+              <StatusMessageIcon
+                className={cls.icon}
+                type={icon}
+                width={iconWidth}
+                height={iconHeight}
+              />
+            )}
+            {messageContent}
+          </StatusMessage>
+        )
       )}
     </div>
   );
