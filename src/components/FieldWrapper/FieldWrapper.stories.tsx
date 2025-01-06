@@ -110,3 +110,13 @@ export const InputVariations: Story = {
     },
   },
 };
+
+export const StaticComboGroupStory = () => {
+  const [options, s] = React.useState('data');
+
+  return (
+    <FieldWrapper type="info" label="Title" text={options} animateText>
+      <Input value={options} onChange={(event) => s(event.target.value)} />
+    </FieldWrapper>
+  );
+};

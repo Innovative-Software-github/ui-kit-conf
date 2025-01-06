@@ -48,3 +48,14 @@
 .icon {
   margin-right: 8px;
 }
+
+.statusMessageWrapper {
+  transform: translateY(-40%);
+  opacity: 0;
+  transition: transform 150ms ease, opacity 150ms ease;
+}
+
+.statusMessageWrapper.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
