@@ -115,3 +115,16 @@ export const Logotype = (
     <path d="M87 15.5V.5h3v6h6v-6h3v15h-3v-6h-6v6zm21 0v-3h-3V.5h3v12h6v3zm6-3V.5h3v12zm9 3V.5h9v3h3v9h-3v3zm3-9h5.88v-3H126zm0 6h5.88v-3H126z" fill="#11C5BA" />
   </svg>
 );
+
+export const Logotype_white = (
+  <svg width="180" height="20" viewBox="0 0 180 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 20V0h12v4H4v4h8v4H4v4h8v4zm28 0v-4h-4V8h-4V0h4v8h4v8h4v4zm8-12V0h4v8zm-4 8V8h4v8zm16 4V0h12v4h-8v4h8v4h-8v4h8v4zm20 0V0h4v4h4v4h4v4h4V0h4v20h-4v-4h-4v-4h-4V8h-4v12zm32 0V4h-4V0h12v4h-4v16z" fill="#fff" />
+    <path d="M116 20V0h4v8h8V0h4v20h-4v-8h-8v8zm28 0v-4h-4V0h4v16h8v4zm8-4V0h4v16zm12 4V0h12v4h4v12h-4v4zm4-12h7.84V4H168zm0 8h7.84v-4H168z" fill="#11C5BA" />
+  </svg>
+);
+
+export const TGLink_44 = (
+  <svg width="44" height="44" viewBox="0 0 44 44" fill="currentColor" color="inherit" xmlns="http://www.w3.org/2000/svg">
+    <path fillRule="evenodd" clipRule="evenodd" d="M22 44c12.15 0 22-9.85 22-22S34.15 0 22 0 0 9.85 0 22s9.85 22 22 22m9.67-29.945c.17-1.927-1.866-1.133-1.866-1.133-1.502.622-3.052 1.254-4.618 1.893-4.858 1.981-9.876 4.028-14.15 6.043-2.318.85-.961 1.7-.961 1.7l3.674 1.134c1.696.51 2.6-.057 2.6-.057l7.915-5.385c2.827-1.927 2.148-.34 1.47.34l-5.936 5.669c-.904.793-.452 1.474-.056 1.814 1.121.99 3.88 2.8 5.085 3.59.313.206.521.342.568.378.282.226 1.809 1.247 2.827 1.02 1.017-.227 1.13-1.53 1.13-1.53l1.357-8.9c.203-1.545.437-3.03.623-4.216.176-1.12.31-1.974.338-2.36" />
+  </svg>
+);
