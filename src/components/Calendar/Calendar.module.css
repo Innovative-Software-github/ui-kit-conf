@@ -3,7 +3,6 @@
 }
 
 .wrapper .calendar {
-  min-width: 367px;
   border: none;
   border-radius: 15px;
   background-color: var(--conf-color-white);
