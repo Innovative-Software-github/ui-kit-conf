@@ -83,7 +83,7 @@ export const MultiSelect:React.FC<IMultiSelect> = ({
 
   return (
     <ComboboxProvider
-      selectedValue={selectedOptions.map((selectedOption) => selectedOption.value)}
+      selectedValue={selectedOptions.map((selectedOption) => selectedOption.title)}
     >
       <div className={clsx(cls.comboboxWrapper, className)}>
         <Combobox

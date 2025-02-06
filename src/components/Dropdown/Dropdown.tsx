@@ -6,7 +6,7 @@ import cls from './Dropdown.module.css';
 
 export interface ISelectOptions {
   id?: string | number;
-  value: string;
+  title: string;
 }
 
 export interface IDropdownProps {
@@ -38,11 +38,11 @@ export const Dropdown: React.FC<IDropdownProps> = ({
             [cls.selectedItem]: selectedOption?.id === option?.id,
           })}
           key={option.id}
-          value={option.value}
+          value={option.title}
           onClick={() => onOptionClick(option)}
           data-hoverable
         >
-          {option.value}
+          {option.title}
           {optionIcon}
         </ComboboxItem>
       ))
