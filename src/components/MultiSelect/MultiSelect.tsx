@@ -71,11 +71,11 @@ export const MultiSelect:React.FC<IMultiSelect> = ({
 
   const handleOptionClick = (option: ISelectOptions) => {
     const isSelected = selectedOptions.some(
-      (selectedOption) => selectedOption.key === option.key,
+      (selectedOption) => selectedOption.id === option.id,
     );
 
     if (isSelected) {
-      onOptionClick(selectedOptions.filter((o) => o.key !== option.key));
+      onOptionClick(selectedOptions.filter((o) => o.id !== option.id));
     } else {
       onOptionClick([...selectedOptions, option]);
     }
