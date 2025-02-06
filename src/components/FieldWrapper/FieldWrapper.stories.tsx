@@ -115,7 +115,7 @@ export const StaticComboGroupStory = () => {
   const [options, s] = React.useState('data');
 
   return (
-    <FieldWrapper type="info" label="Title" text={options} animateText>
+    <FieldWrapper type="info" label="Title" text={options} isAnimateText>
       <Input value={options} onChange={(event) => s(event.target.value)} />
     </FieldWrapper>
   );

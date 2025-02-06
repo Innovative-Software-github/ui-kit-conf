@@ -21,7 +21,7 @@ interface IFieldWrapperProps {
   iconWidth?: number;
   iconHeight?: number;
   className?: string;
-  animateText?: boolean;
+  isAnimateText?: boolean;
 }
 
 const DISPLAY_NAME = 'FieldWrapper';
@@ -37,14 +37,14 @@ export const FieldWrapper: React.FC<IFieldWrapperProps> = (props) => {
     iconWidth,
     iconHeight,
     size = 'M',
-    animateText = false,
+    isAnimateText = false,
   } = props;
 
   const [isTextVisible, setIsTextVisible] = React.useState(!!text);
 
   // eslint-disable-next-line consistent-return
   React.useEffect(() => {
-    if (animateText) {
+    if (isAnimateText) {
       if (text) {
         setIsTextVisible(true);
       } else {
@@ -57,7 +57,7 @@ export const FieldWrapper: React.FC<IFieldWrapperProps> = (props) => {
     } else {
       setIsTextVisible(!!text);
     }
-  }, [text, animateText]);
+  }, [text, isAnimateText]);
 
   const getStatusMessageContent = () => text || '';
 
@@ -78,7 +78,7 @@ export const FieldWrapper: React.FC<IFieldWrapperProps> = (props) => {
         </StatusMessage>
       )}
       {children}
-      {animateText ? (
+      {isAnimateText ? (
         <div
           className={clsx(cls.statusMessageWrapper, {
             [cls.visible]: !!text,
