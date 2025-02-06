@@ -1,6 +1,6 @@
 {
   "name": "ui-kit-conf",
-  "version": "1.1.13-beta.7",
+  "version": "1.1.13-beta.8",
   "main": "cjs/src/index.js",
   "module": "es/src/index.js",
   "types": "types/index.d.ts",
