@@ -17,7 +17,7 @@ import cls from '../Dropdown/Dropdown.module.css';
 
 export interface IMultiSelect extends Omit<IInputProps, 'onChange' | 'value'> {
   options: ISelectOptions[];
-  selectedOptions: ISelectOptions[];
+  selectedOptions: (string | number)[];
   /**
    * Текст, отображаемый, если опции не найдены.
    * @default 'Не найдено'
@@ -34,7 +34,7 @@ export interface IMultiSelect extends Omit<IInputProps, 'onChange' | 'value'> {
    * Дополнительный CSS-класс для выпадающего списка.
    */
   dropdownClassName?: string;
-  onOptionClick: (options: ISelectOptions[]) => void;
+  onOptionClick: (options: (string | number)[]) => void;
 }
 
 /**
@@ -51,7 +51,7 @@ export interface IMultiSelect extends Omit<IInputProps, 'onChange' | 'value'> {
  * @param {IMultiSelect} props - Свойства компонента.
  * @returns {React.FC} Компонент `MultiSelect`.
  */
-export const MultiSelect:React.FC<IMultiSelect> = ({
+export const MultiSelect: React.FC<IMultiSelect> = ({
   options,
   selectedOptions,
   emptyContent,
@@ -70,20 +70,20 @@ export const MultiSelect:React.FC<IMultiSelect> = ({
   }, [inputValue, options, isInputReadOnly]);
 
   const handleOptionClick = (option: ISelectOptions) => {
-    const isSelected = selectedOptions.some(
-      (selectedOption) => selectedOption.id === option.id,
-    );
+    const isSelected = selectedOptions.includes(option.id);
 
     if (isSelected) {
-      onOptionClick(selectedOptions.filter((o) => o.id !== option.id));
+      onOptionClick(selectedOptions.filter((id) => id !== option.id));
     } else {
-      onOptionClick([...selectedOptions, option]);
+      onOptionClick([...selectedOptions, option.id]);
     }
   };
 
   return (
     <ComboboxProvider
-      selectedValue={selectedOptions.map((selectedOption) => selectedOption.title)}
+      selectedValue={selectedOptions.map(
+        (id) => options.find((o) => o.id === id)?.title || '',
+      )}
     >
       <div className={clsx(cls.comboboxWrapper, className)}>
         <Combobox
@@ -92,7 +92,7 @@ export const MultiSelect:React.FC<IMultiSelect> = ({
               {...props}
               {...inputProps}
               value={inputValue}
-              onChange={(event) => setInputValue(event.target.value)}
+              onChange={(e) => setInputValue(e.target.value)}
               readOnly={isInputReadOnly}
               className={cls.comboboxInput}
             />

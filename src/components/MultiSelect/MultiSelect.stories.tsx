@@ -5,14 +5,14 @@ import { MultiSelect } from './MultiSelect';
 import { ISelectOptions } from '../Dropdown/Dropdown';
 
 const List: ISelectOptions[] = [
-  { key: '0', value: 'Apple' },
-  { key: '1', value: 'Bacon' },
-  { key: '2', value: 'Banana' },
-  { key: '3', value: 'Broccoli' },
-  { key: '4', value: 'Burger' },
-  { key: '5', value: 'Cake' },
-  { key: '6', value: 'Candy' },
-  { key: '7', value: 'Carrot' },
+  { id: '0', title: 'Apple' },
+  { id: '1', title: 'Bacon' },
+  { id: '2', title: 'Banana' },
+  { id: '3', title: 'Broccoli' },
+  { id: '4', title: 'Burger' },
+  { id: '5', title: 'Cake' },
+  { id: '6', title: 'Candy' },
+  { id: '7', title: 'Carrot' },
 ];
 
 const meta: Meta<typeof MultiSelect> = {
@@ -26,6 +26,7 @@ export const MultiSelectStory = (args) => {
 
   const handleOptionClick = (option: any) => {
     setSelectedOptions(option);
+    console.log(option, selectedOptions);
   };
 
   return (
