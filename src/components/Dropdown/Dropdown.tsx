@@ -5,8 +5,8 @@ import { ComboboxItem, ComboboxPopover } from '@ariakit/react';
 import cls from './Dropdown.module.css';
 
 export interface ISelectOptions {
-  key?: string;
-  value: string;
+  id?: string | number;
+  title: string;
 }
 
 export interface IDropdownProps {
@@ -35,14 +35,14 @@ export const Dropdown: React.FC<IDropdownProps> = ({
       options.map((option) => (
         <ComboboxItem
           className={clsx(cls.comboboxOption, {
-            [cls.selectedItem]: selectedOption?.key === option?.key,
+            [cls.selectedItem]: selectedOption?.id === option?.id,
           })}
-          key={option.key}
-          value={option.value}
+          key={option.id}
+          value={option.title}
           onClick={() => onOptionClick(option)}
           data-hoverable
         >
-          {option.value}
+          {option.title}
           {optionIcon}
         </ComboboxItem>
       ))

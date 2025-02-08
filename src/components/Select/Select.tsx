@@ -64,7 +64,7 @@ export const Select:React.FC<ISelectProps> = ({
   onOptionClick,
   ...inputProps
 }) => {
-  const [inputValue, setInputValue] = React.useState(selectedOption?.value || '');
+  const [inputValue, setInputValue] = React.useState(selectedOption?.title || '');
 
   const isUncontrolledInput = !isInputReadOnly && !onInputChange;
 
@@ -79,15 +79,15 @@ export const Select:React.FC<ISelectProps> = ({
 
     setInputValue(value);
     if (!isInputReadOnly && onInputChange) {
-      onInputChange({ value });
+      onInputChange({ title: value });
     }
   };
 
-  const handleInputBlur = () => isUncontrolledInput && setInputValue(selectedOption?.value);
+  const handleInputBlur = () => isUncontrolledInput && setInputValue(selectedOption?.title);
 
   React.useEffect(() => {
-    setInputValue(selectedOption?.value);
-  }, [selectedOption?.value]);
+    setInputValue(selectedOption?.title);
+  }, [selectedOption?.title]);
 
   return (
     <ComboboxProvider>

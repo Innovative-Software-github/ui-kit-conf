@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 
 import { usePagination } from './utils';
 import { PaginationItem } from './PaginationItem/PaginationItem';
@@ -12,6 +13,7 @@ export interface IPaginationProps {
   page: number;
   siblingCount: number;
   boundaryCount: number;
+  className?: string;
   onChange: (page: number) => void
 }
 
@@ -21,6 +23,7 @@ export const Pagination: React.FC<IPaginationProps> = (props) => {
     count,
     siblingCount = 1,
     boundaryCount = 2,
+    className,
     onChange,
   } = props;
   const items = React.useMemo(
@@ -56,7 +59,7 @@ export const Pagination: React.FC<IPaginationProps> = (props) => {
   };
 
   return (
-    <div className={cls.pagination}>
+    <div className={clsx(cls.pagination, className)}>
       {items.map((item) => renderPaginationItem(item))}
     </div>
   );
