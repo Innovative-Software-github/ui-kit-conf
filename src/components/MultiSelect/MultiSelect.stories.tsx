@@ -26,7 +26,6 @@ export const MultiSelectStory = (args) => {
 
   const handleOptionClick = (option: any) => {
     setSelectedOptions(option);
-    console.log(option, selectedOptions);
   };
 
   return (
