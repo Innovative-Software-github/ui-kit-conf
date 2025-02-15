@@ -39,6 +39,7 @@ export const Textarea: React.FC<ITextareaProps> = ({
     placeholder={placeholder}
     value={value}
     disabled={isDisabled || isLoading}
+    onChange={onChange}
   />
 );
 Textarea.displayName = DISPLAY_NAME;
