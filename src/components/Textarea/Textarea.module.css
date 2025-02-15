@@ -1,0 +1,29 @@
+.textarea {
+  width: 100%;
+  padding: 14px 16px;
+  line-height: 20px;
+  border-radius: 14px;
+  border: 1px solid var(--conf-color-grey-2);
+  vertical-align: top;
+  outline: none;
+  resize: none;
+
+  cursor: default;
+  transition: border 150ms ease;
+}
+
+.textarea:hover {
+  border: 1px solid var(--conf-color-grey-3);
+}
+
+.textarea::placeholder {
+  color: var(--conf-color-grey-3);
+}
+
+.textarea:focus-within {
+  border-color: var(--conf-color-cyan-7);
+}
+
+.textarea.error {
+  border-color: var(--conf-color-red-7);
+}

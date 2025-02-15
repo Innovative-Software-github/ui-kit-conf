@@ -1,6 +1,6 @@
 export { Icon } from './components/Icon/Icon';
-export { Button } from './components/Button/Button';
 export { IconType } from './components/Icon/IconsMapping';
+export { Button } from './components/Button/Button';
 export { Spinner } from './components/Spinner/Spinner';
 export { Checkbox } from './components/Checkbox/Checkbox';
 export { StatusMessage } from './components/StatusMessage/StatusMessage';
@@ -13,3 +13,4 @@ export { Pagination } from './components/Pagination/Pagination';
 export { Calendar } from './components/Calendar/Calendar';
 export { ComboGroup } from './components/ComboGroup/ComboGroup';
 export { Tag } from './components/Tag/Tag';
+export { Textarea } from './components/Textarea/Textarea';
