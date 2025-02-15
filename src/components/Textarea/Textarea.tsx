@@ -20,18 +20,18 @@ export interface ITextareaProps extends Omit<React.InputHTMLAttributes<HTMLTextA
 export const Textarea: React.FC<ITextareaProps> = ({
   value,
   type,
-  className,
   isError,
   isLoading,
   isDisabled,
   placeholder,
+  className,
   onChange,
   onPressEnter,
   ...nativeInputProps
 }) => (
   <textarea
     {...nativeInputProps}
-    className={clsx(cls.textarea, {
+    className={clsx(cls.textarea, className, {
       [cls.loading]: isLoading,
       [cls.error]: isError,
       [cls.disable]: isDisabled,
