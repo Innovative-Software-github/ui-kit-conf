@@ -1,34 +1,25 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import { clsx } from 'clsx';
 
-import { IconType } from '../Icon/IconsMapping';
 import { Icon } from '../Icon/Icon';
 import { Spinner } from '../Spinner/Spinner';
+import { IButtonBase } from '../Button/Button';
 
-import cls from './Button.module.css';
+import cls from './LinkButton.module.css';
 
-const DISPLAY_NAME = 'Button';
+const DISPLAY_NAME = 'Link-button';
 
 export type TButtonSize = 'M' | 'L';
 export type TButtonVariant = 'default' | 'outlined' | 'text';
 
-type TButtonHTMLAttributes = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'>
-
-export interface IButtonBase {
-  className?: string;
-  variant: TButtonVariant;
-  size?: TButtonSize;
-  isLoading?: boolean;
-  isDisabled?: boolean;
-  leftIconType?: IconType;
-  rightIconType?: IconType
-}
+type TButtonHTMLAttributes = Omit<React.ButtonHTMLAttributes<HTMLAnchorElement>, 'href' | 'disabled'>
 
 export interface IButtonProps extends TButtonHTMLAttributes, React.PropsWithChildren, IButtonBase {
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+url: string;
+  isExternalLink: boolean;
 }
 
-export const Button = forwardRef<HTMLButtonElement, IButtonProps>((props, ref) => {
+export const LinkButton: React.FC<IButtonProps> = ((props) => {
   const {
     children,
     className,
@@ -38,7 +29,8 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>((props, ref) =
     size = 'L',
     rightIconType,
     leftIconType,
-    onClick,
+    isExternalLink,
+    url,
     ...restProps
   } = props;
 
@@ -74,21 +66,22 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>((props, ref) =
   )));
 
   return (
-    <button
+    <a
       type="button"
       {...restProps}
-      className={clsx(cls.button, className)}
-      ref={ref}
+      className={clsx(cls.linkButton, className)}
       data-variant={variant}
       data-size={size}
-      disabled={isDisabled || isLoading}
-      onClick={onClick}
+      aria-disabled={isDisabled || isLoading}
+      rel={isExternalLink ? 'noopener noreferrer' : undefined}
+      target={isExternalLink ? '_blank' : undefined}
+      href={url}
     >
       {leftIcon}
       {children}
       {rightIcon}
-    </button>
+    </a>
   );
 });
 
-Button.displayName = DISPLAY_NAME;
+LinkButton.displayName = DISPLAY_NAME;
