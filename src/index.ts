@@ -14,3 +14,4 @@ export { Calendar } from './components/Calendar/Calendar';
 export { ComboGroup } from './components/ComboGroup/ComboGroup';
 export { Tag } from './components/Tag/Tag';
 export { Textarea } from './components/Textarea/Textarea';
+export { LinkButton } from './components/LinkButton/LinkButton';
