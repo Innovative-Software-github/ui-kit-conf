@@ -5,14 +5,14 @@ import { Select } from './Select';
 import { ISelectOptions } from '../Dropdown/Dropdown';
 
 const List: ISelectOptions[] = [
-  { key: '0', value: 'Яблоко' },
-  { key: '1', value: 'Бекон' },
-  { key: '2', value: 'Банан' },
-  { key: '3', value: 'Брокколи' },
-  { key: '4', value: 'Бургер' },
-  { key: '5', value: 'Пирог' },
-  { key: '6', value: 'Конфета' },
-  { key: '7', value: 'Морковь' },
+  { id: '0', title: 'Яблоко' },
+  { id: '1', title: 'Бекон' },
+  { id: '2', title: 'Банан' },
+  { id: '3', title: 'Брокколи' },
+  { id: '4', title: 'Бургер' },
+  { id: '5', title: 'Пирог' },
+  { id: '6', title: 'Конфета' },
+  { id: '7', title: 'Морковь' },
 ];
 
 const meta: Meta<typeof Select> = {
@@ -109,15 +109,15 @@ export const SelectStory = (args) => {
           fontFamily: 'Arial, sans-serif',
         }}
       >
-        <strong>Value:</strong>
+        <strong>title:</strong>
         {' '}
-        {selectedOption?.value?.toString()}
+        {selectedOption?.title?.toString()}
         {' '}
         -
         {' '}
         <strong>Key:</strong>
         {' '}
-        {selectedOption?.key?.toString()}
+        {selectedOption?.id?.toString()}
       </div>
     </>
   );

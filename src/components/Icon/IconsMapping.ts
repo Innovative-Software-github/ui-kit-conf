@@ -22,6 +22,7 @@ export enum IconType {
   Logotype = 'Logotype',
   Logotype_white = 'Logotype_white',
   TGLink_44 = 'TGLink_44',
+  Picture_44 = 'Picture_44',
 }
 
 export const iconToComponent: Record<IconType, JSX.Element> = {
@@ -46,4 +47,5 @@ export const iconToComponent: Record<IconType, JSX.Element> = {
   [IconType.Logotype]: confIcon.Logotype,
   [IconType.Logotype_white]: confIcon.Logotype_white,
   [IconType.TGLink_44]: confIcon.TGLink_44,
+  [IconType.Picture_44]: confIcon.Picture_44,
 };
