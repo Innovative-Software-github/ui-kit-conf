@@ -1,6 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
 
+import { useMediaQuery } from 'react-responsive';
+
 import { usePagination } from './utils';
 import { PaginationItem } from './PaginationItem/PaginationItem';
 import { PaginationButton } from './PaginationButton/PaginationButton';
@@ -18,17 +20,18 @@ export interface IPaginationProps {
 }
 
 export const Pagination: React.FC<IPaginationProps> = (props) => {
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const {
     page,
     count,
-    siblingCount = 1,
-    boundaryCount = 2,
+    siblingCount,
+    boundaryCount,
     className,
     onChange,
   } = props;
   const items = React.useMemo(
     () => usePagination({
-      count, page, siblingCount, boundaryCount,
+      count, page, siblingCount, boundaryCount, isMobile,
     }),
     [count, page, siblingCount, boundaryCount],
   );

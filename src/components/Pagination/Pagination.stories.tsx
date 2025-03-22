@@ -23,7 +23,6 @@ export const PaginationDefault: Story = {
     page, count, siblingCount, boundaryCount,
   }) => {
     const [currentPage, setCurrentPage] = useState(page);
-
     const handlePageChangeInternal = (page: number) => {
       console.log(page);
       setCurrentPage(page);

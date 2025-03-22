@@ -2,3 +2,9 @@
   display: flex;
   gap: 4px;
 }
+
+@media (max-width: 768px){
+  .pagination {
+    gap: 2px;
+  }  
+}
