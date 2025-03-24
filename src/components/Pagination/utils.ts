@@ -21,41 +21,61 @@ export const usePagination = ({
   const siblingsStart = Math.max(
     Math.min(
       page - siblingCount,
-      count - boundaryCount - siblingCount * 2 - 1,
+      count - siblingCount * 2 - boundaryCount,
     ),
-    boundaryCount + 2,
+    boundaryCount + 1,
   );
 
   const siblingsEnd = Math.min(
     Math.max(
       page + siblingCount,
-      boundaryCount + siblingCount * 2 + 2,
+      siblingCount * 2 + 1 + boundaryCount,
     ),
-    count - boundaryCount - 1,
+    count - boundaryCount,
   );
 
+  // Перегрузки для getStartEllipsisContent
+  function getStartEllipsisContent(siblingsStart: number, boundaryCount: number, count: number):
+  ('start-ellipsis' | number)[];
+
+  function getStartEllipsisContent(siblingsStart: number): ('start-ellipsis' | number)[];
+
+  function getStartEllipsisContent(siblingsStart: number, boundaryCount?: number, count?: number):
+  ('start-ellipsis' | number)[] {
+    if (boundaryCount !== undefined && count !== undefined) {
+      // Исправлено условие с boundaryCount +1
+      if (siblingsStart > boundaryCount + 1 && boundaryCount !== 0) {
+        return ['start-ellipsis'];
+      }
+    }
+
+    return [];
+  }
+
+  // Перегрузки для getEndEllipsisContent
+  function getEndEllipsisContent(siblingsEnd: number, boundaryCount: number, count: number):
+  ('end-ellipsis' | number)[];
+  function getEndEllipsisContent(siblingsEnd: number): ('end-ellipsis' | number)[];
+
+  function getEndEllipsisContent(siblingsEnd: number, boundaryCount?: number, count?: number):
+  ('end-ellipsis' | number)[] {
+    if (boundaryCount !== undefined && count !== undefined) {
+      if (siblingsEnd < count - boundaryCount && boundaryCount !== 0) {
+        return ['end-ellipsis'];
+      }
+    }
+
+    return [];
+  }
+
   const itemList = [
-    ...(['previous']),
-    ...startPages,
-
-    // eslint-disable-next-line no-nested-ternary
-    ...(siblingsStart > boundaryCount + 2
-      ? ['start-ellipsis']
-      : boundaryCount + 1 < count - boundaryCount
-        ? [boundaryCount + 1]
-        : []),
-
+    'previous',
+    ...(boundaryCount > 0 ? startPages : []),
+    ...(boundaryCount > 0 ? getStartEllipsisContent(siblingsStart, boundaryCount, count) : []),
     ...range(siblingsStart, siblingsEnd),
-
-    // eslint-disable-next-line no-nested-ternary
-    ...(siblingsEnd < count - boundaryCount - 1
-      ? ['end-ellipsis']
-      : count - boundaryCount > boundaryCount
-        ? [count - boundaryCount]
-        : []),
-
-    ...endPages,
-    ...(['next']),
+    ...(boundaryCount > 0 ? getEndEllipsisContent(siblingsEnd, boundaryCount, count) : []),
+    ...(boundaryCount > 0 ? endPages : []),
+    'next',
   ];
 
   return itemList;

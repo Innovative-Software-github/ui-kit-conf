@@ -36,15 +36,36 @@ export const Pagination: React.FC<IPaginationProps> = (props) => {
   const renderPaginationItem = (item) => {
     switch (typeof item) {
       case 'number':
-        return <PaginationItem key={item} page={page} onClick={() => onChange(item)}>{item}</PaginationItem>;
+        return (
+          <PaginationItem
+            key={item}
+            page={page}
+            onClick={() => onChange(item)}
+          >
+            {item}
+          </PaginationItem>
+        );
 
       case 'string':
         switch (item) {
           case 'previous':
-            return <PaginationButton key={item} variant={item} onClick={() => onChange(page - 1)} />;
+            return (
+              <PaginationButton
+                key={item}
+                variant={item}
+                onClick={() => onChange(page - 1)}
+                disabled={page === 1}
+              />
+            );
           case 'next':
-            return <PaginationButton key={item} variant={item} onClick={() => onChange(page + 1)} />;
-
+            return (
+              <PaginationButton
+                key={item}
+                variant={item}
+                onClick={() => onChange(page + 1)}
+                disabled={page === count}
+              />
+            );
           case 'start-ellipsis':
           case 'end-ellipsis':
             return <PaginationEllipsis key={item} />;
