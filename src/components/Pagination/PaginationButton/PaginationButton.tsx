@@ -6,11 +6,13 @@ import cls from './PaginationButton.module.css';
 
 export interface IPaginationButton {
   variant: 'previous' | 'next';
+  disabled: boolean;
   onClick: () => void;
 }
 
 export const PaginationButton: React.FC<IPaginationButton> = ({
   variant,
+  disabled,
   onClick,
 }) => {
   const text = variant === 'next' ? 'Дальше' : 'Назад';
@@ -22,6 +24,7 @@ export const PaginationButton: React.FC<IPaginationButton> = ({
       className={cls.button}
       data-side={variant}
       type="button"
+      disabled={disabled}
       onClick={onClick}
     >
       {leftIcon}
