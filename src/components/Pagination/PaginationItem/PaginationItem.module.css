@@ -1,4 +1,4 @@
-button {
+.button {
   all: unset;
   display: inline-flex;
   align-items: center;

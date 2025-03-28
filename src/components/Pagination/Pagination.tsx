@@ -33,7 +33,7 @@ export const Pagination: React.FC<IPaginationProps> = (props) => {
     [count, page, siblingCount, boundaryCount],
   );
 
-  const IsAnimationDisabled = React.useMemo(
+  const isAnimationDisabled = React.useMemo(
     () => items.includes('start-ellipsis') && items.includes('start-ellipsis'),
     [items],
   );
@@ -45,7 +45,7 @@ export const Pagination: React.FC<IPaginationProps> = (props) => {
           <PaginationItem
             key={item}
             page={page}
-            IsAnimationDisabled={IsAnimationDisabled || boundaryCount === 0}
+            isAnimationDisabled={isAnimationDisabled || boundaryCount === 0}
             onClick={() => onChange(item)}
           >
             {item}
