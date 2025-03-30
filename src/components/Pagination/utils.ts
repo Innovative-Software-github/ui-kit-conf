@@ -18,13 +18,16 @@ export const usePagination = ({
   const startPages = range(1, Math.min(boundaryCount, count));
   const endPages = range(Math.max(count - boundaryCount + 1, boundaryCount + 1), count);
 
+  // Если есть крайние страницы, то добавим еще 1 sibling элемент, чтобы избежать изменения размеров
+  const extraElement = boundaryCount > 0 ? 1 : 0;
+
   // Вычисляем начальный индекс блока страниц вокруг текущей (siblings)
   const siblingsStart = Math.max(
     Math.min(
       // Старт от текущей страницы минус siblingCount (чтобы показать siblingCount страниц слева)
       page - siblingCount,
-      // Но не дальше чем count - siblingCount*2 - boundaryCount (чтобы справа осталось место)
-      count - siblingCount * 2 - boundaryCount,
+      // Но не дальше чем count - siblingCount*2 - boundaryCount - freeElement (чтобы справа осталось место)
+      count - siblingCount * 2 - boundaryCount - extraElement,
     ),
     // И не меньше чем boundaryCount + 1 (чтобы не пересекаться с начальными страницами)
     boundaryCount + 1,
@@ -35,8 +38,8 @@ export const usePagination = ({
     Math.max(
       // Конец от текущей страницы плюс siblingCount (чтобы показать siblingCount страниц справа)
       page + siblingCount,
-      // Но не меньше чем siblingCount*2 + 1 + boundaryCount (чтобы слева осталось место)
-      siblingCount * 2 + 1 + boundaryCount,
+      // Но не меньше чем siblingCount*2 + 1 + boundaryCount + freeElement (чтобы слева осталось место) и при этом не уменбшать кол-вао элементов
+      siblingCount * 2 + 1 + boundaryCount + extraElement,
     ),
     // И не больше чем count - boundaryCount (чтобы не пересекаться с конечными страницами)
     count - boundaryCount,
