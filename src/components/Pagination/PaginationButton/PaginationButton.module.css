@@ -12,9 +12,15 @@
 }
 
 .button[data-side="previous"] {
-  margin-right: 24px;
+  margin-right: 16px;
 }
 
 .button[data-side="next"] {
-  margin-left: 24px;
+  margin-left: 16px;
+}
+
+.button:disabled {
+  color: var(--conf-color-grey-3);
+  cursor: not-allowed;
+  pointer-events: none;
 }

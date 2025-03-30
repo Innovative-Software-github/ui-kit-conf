@@ -5,17 +5,20 @@ import cls from './PaginationItem.module.css';
 
 export interface IPaginationItem extends PropsWithChildren {
   page: number;
+  isAnimationDisabled: boolean;
   onClick: () => void;
 }
 
 export const PaginationItem: React.FC<IPaginationItem> = ({
   page,
   children,
+  isAnimationDisabled,
   onClick,
 }) => (
   <button
     className={clsx(cls.button, {
       [cls.active]: page === children,
+      [cls.disabledTransition]: isAnimationDisabled,
     })}
     type="button"
     onClick={onClick}
