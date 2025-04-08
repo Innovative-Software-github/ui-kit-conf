@@ -33,6 +33,18 @@ export interface ISelectProps extends Omit<IInputProps, 'onChange' | 'value'> {
    * Дополнительный CSS-класс для выпадающего списка.
    */
   dropdownClassName?: string;
+  /**
+   * Функция для создания кастомного элемента DropDown
+   *
+   * @param option - сам список элементов
+   * @param isSelected - состояние выбранного элемента
+   * @returns компонент DropDown (React.ReactNode)
+   */
+  renderOption?: (
+    option: ISelectOptions,
+    isSelected: boolean
+  ) => React.ReactNode;
+
   onInputChange?: (option: ISelectOptions) => void;
   onOptionClick: (option: ISelectOptions) => void;
 }
@@ -60,6 +72,7 @@ export const Select:React.FC<ISelectProps> = ({
   isInputReadOnly = false,
   className,
   dropdownClassName,
+  renderOption,
   onInputChange,
   onOptionClick,
   ...inputProps
@@ -113,6 +126,7 @@ export const Select:React.FC<ISelectProps> = ({
         options={filteredOptions}
         selectedOption={selectedOption}
         dropdownClassName={dropdownClassName}
+        renderOption={renderOption}
         onOptionClick={onOptionClick}
       />
     </ComboboxProvider>

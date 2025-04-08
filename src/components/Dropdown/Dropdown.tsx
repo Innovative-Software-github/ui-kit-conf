@@ -16,6 +16,10 @@ export interface IDropdownProps {
   emptyContent?: string;
   dropdownClassName?: string;
   onOptionClick: (option: ISelectOptions) => void;
+  renderOption?: (
+    option: ISelectOptions,
+    isSelected: boolean
+  ) => React.ReactNode;
 }
 
 /**
@@ -29,6 +33,7 @@ export const Dropdown: React.FC<IDropdownProps> = ({
   emptyContent = 'Не найдено',
   dropdownClassName,
   onOptionClick,
+  renderOption,
 }) => (
   <ComboboxPopover className={clsx(cls.comboboxPopover, dropdownClassName)} gutter={8} sameWidth>
     {options.length ? (
@@ -42,8 +47,14 @@ export const Dropdown: React.FC<IDropdownProps> = ({
           onClick={() => onOptionClick(option)}
           data-hoverable
         >
-          {option.title}
-          {optionIcon}
+          {renderOption
+            ? renderOption(option, selectedOption?.id === option.id)
+            : (
+              <>
+                {option.title}
+                {optionIcon}
+              </>
+            )}
         </ComboboxItem>
       ))
     ) : (
