@@ -3,7 +3,6 @@ import {
   ComboboxProvider,
   Combobox,
   ComboboxDisclosure,
-  ComboboxItemCheck,
 } from '@ariakit/react';
 import { matchSorter } from 'match-sorter';
 import clsx from 'clsx';
@@ -11,47 +10,27 @@ import clsx from 'clsx';
 import { IInputProps, Input } from '../Input/Input';
 import { IconType } from '../Icon/IconsMapping';
 import { Icon } from '../Icon/Icon';
-import { Dropdown, ISelectOptions } from '../Dropdown/Dropdown';
+import { Dropdown, ISelectOption } from '../Dropdown/Dropdown';
 
 import cls from '../Dropdown/Dropdown.module.css';
 
-export interface IMultiSelect extends Omit<IInputProps, 'onChange' | 'value'> {
-  options: ISelectOptions[];
-  selectedOptions: (string | number)[];
-  /**
-   * Текст, отображаемый, если опции не найдены.
-   * @default 'Не найдено'
-   */
+// Определяем дженерик для MultiSelect
+export interface IMultiSelect<TOption extends ISelectOption> extends Omit<IInputProps, 'onChange' | 'value'> {
+  options: TOption[]; // Опции теперь поддерживают любые типы, которые расширяют ISelectOption
+  selectedOptions: (string | number)[]; // Массив выбранных опций
   emptyContent?: string;
-  /**
-   * Флаг, определяющий, является ли поле ввода только для чтения.
-   * Если `true`, пользователь не может вводить значение вручную.
-   * @default false
-   */
   isInputReadOnly?: boolean;
   className?: string;
-  /**
-   * Дополнительный CSS-класс для выпадающего списка.
-   */
   dropdownClassName?: string;
   onOptionClick: (options: (string | number)[]) => void;
+  renderOption?: (
+    option: TOption,
+    isSelected: boolean
+  ) => React.ReactNode; // Принимаем функцию renderOption для кастомного рендеринга опций
 }
 
-/**
- * Компонент `MultiSelect` позволяет выбирать несколько опций из выпадающего списка
- * с возможностью фильтрации по вводу пользователя.
- *
- * **Особенности компонента:**
- *
- * - **Множественный выбор:** Пользователь может выбрать одну или несколько опций из списка.
- * - **Фильтрация опций:** При вводе текста в поле ввода опции фильтруются по соответствию.
- * - **Чтение только для чтения:** Если `isInputReadOnly` установлено в `true`, поле ввода отключено и служит только для отображения.
- * - **Настраиваемые обратные вызовы:** Используйте `onOptionClick` для обработки изменений в выбранных опциях.
- *
- * @param {IMultiSelect} props - Свойства компонента.
- * @returns {React.FC} Компонент `MultiSelect`.
- */
-export const MultiSelect: React.FC<IMultiSelect> = ({
+// Обновлённый компонент MultiSelect с дженериками
+export const MultiSelect = <TOption extends ISelectOption>({
   options,
   selectedOptions,
   emptyContent,
@@ -59,17 +38,18 @@ export const MultiSelect: React.FC<IMultiSelect> = ({
   className,
   dropdownClassName,
   onOptionClick,
+  renderOption, // Получаем renderOption как пропс
   ...inputProps
-}) => {
+}: IMultiSelect<TOption>) => {
   const [inputValue, setInputValue] = React.useState('');
 
   const filteredOptions = React.useMemo(() => {
     if (isInputReadOnly || !inputValue) return options;
 
-    return matchSorter(options, inputValue, { keys: ['value'] });
+    return matchSorter(options, inputValue, { keys: ['title'] });
   }, [inputValue, options, isInputReadOnly]);
 
-  const handleOptionClick = (option: ISelectOptions) => {
+  const handleOptionClick = (option: TOption) => {
     const isSelected = selectedOptions.includes(option.id);
 
     if (isSelected) {
@@ -78,6 +58,19 @@ export const MultiSelect: React.FC<IMultiSelect> = ({
       onOptionClick([...selectedOptions, option.id]);
     }
   };
+
+  const defaultRenderOption = (option: TOption, isSelected: boolean) => (
+    <div
+      className={clsx(cls.comboboxOption, {
+        [cls.selectedItem]: isSelected,
+      })}
+    >
+      {option.title}
+      {isSelected && (
+        <Icon type={IconType.Checkmark_20} width={16} height={16} />
+      )}
+    </div>
+  );
 
   return (
     <ComboboxProvider
@@ -105,9 +98,11 @@ export const MultiSelect: React.FC<IMultiSelect> = ({
       </div>
       <Dropdown
         options={filteredOptions}
-        optionIcon={<ComboboxItemCheck />}
+        selectedOption={null} // Заглушка, т.к. выбор множественный
+        emptyContent={emptyContent}
         dropdownClassName={dropdownClassName}
         onOptionClick={handleOptionClick}
+        renderOption={renderOption || defaultRenderOption} // Используем переданный renderOption или дефолтный
       />
     </ComboboxProvider>
   );

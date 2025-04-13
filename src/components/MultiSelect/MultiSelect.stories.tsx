@@ -1,10 +1,9 @@
 import React from 'react';
 import type { Meta } from '@storybook/react';
-
 import { MultiSelect } from './MultiSelect';
-import { ISelectOptions } from '../Dropdown/Dropdown';
+import { ISelectOption } from '../Dropdown/Dropdown';
 
-const List: ISelectOptions[] = [
+const List: ISelectOption[] = [
   { id: '0', title: 'Apple' },
   { id: '1', title: 'Bacon' },
   { id: '2', title: 'Banana' },
@@ -22,10 +21,47 @@ const meta: Meta<typeof MultiSelect> = {
 export default meta;
 
 export const MultiSelectStory = (args) => {
-  const [selectedOptions, setSelectedOptions] = React.useState<any>([]);
+  const [selectedOptions, setSelectedOptions] = React.useState<(string | number)[]>([]);
 
-  const handleOptionClick = (option: any) => {
-    setSelectedOptions(option);
+  const handleOptionClick = (optionIds: (string | number)[]) => {
+    setSelectedOptions(optionIds);
+  };
+
+  const selectedTitles = selectedOptions
+    .map((id) => List.find((option) => option.id === id)?.title)
+    .filter(Boolean)
+    .join(', ');
+
+  const renderOption = (option: ISelectOption) => {
+    const isSelected = selectedOptions.includes(option.id);
+
+    return (
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          padding: '8px 12px',
+          borderRadius: '4px',
+          cursor: 'pointer',
+          gap: '10px',
+          backgroundColor: isSelected ? '#e6f7ff' : 'transparent', // Цвет фона для выбранных опций
+        }}
+      >
+        {isSelected && (
+          <span
+            style={{
+              color: '#1890ff',
+              fontWeight: 'bold',
+            }}
+          >
+            Good
+          </span>
+        )}
+        {' '}
+        {/* Текст 'vjlpb' для выбранных опций */}
+        <span>{option.title}</span>
+      </div>
+    );
   };
 
   return (
@@ -66,6 +102,7 @@ export const MultiSelectStory = (args) => {
             selectedOptions={selectedOptions}
             onOptionClick={handleOptionClick}
             placeholder="Выберите поле"
+            renderOption={renderOption}
           />
         </div>
       </div>
@@ -78,15 +115,13 @@ export const MultiSelectStory = (args) => {
           fontFamily: 'Arial, sans-serif',
         }}
       >
-        <strong>Value:</strong>
+        <strong>Выбранные ID:</strong>
         {' '}
-        {selectedOptions.map((selectedOption) => selectedOption.value)}
+        {selectedOptions.join(', ')}
+        <br />
+        <strong>Выбранные значения:</strong>
         {' '}
-        -
-        {' '}
-        <strong>Key:</strong>
-        {' '}
-        {selectedOptions.map((selectedOption) => selectedOption.key)}
+        {selectedTitles}
       </div>
     </>
   );
