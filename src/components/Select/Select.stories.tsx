@@ -2,17 +2,38 @@ import React from 'react';
 import type { Meta } from '@storybook/react';
 
 import { Select } from './Select';
-import { ISelectOptions } from '../Dropdown/Dropdown';
+import { ISelectOption } from '../Dropdown/Dropdown';
 
-const List: ISelectOptions[] = [
-  { id: '0', title: 'Яблоко' },
-  { id: '1', title: 'Бекон' },
-  { id: '2', title: 'Банан' },
-  { id: '3', title: 'Брокколи' },
-  { id: '4', title: 'Бургер' },
-  { id: '5', title: 'Пирог' },
-  { id: '6', title: 'Конфета' },
-  { id: '7', title: 'Морковь' },
+interface IFoodOption extends ISelectOption {
+  emoji: string;
+  category: string;
+}
+
+const List: IFoodOption[] = [
+  {
+    id: '0', title: 'Яблоко', category: 'Фрукты', emoji: '🍏',
+  },
+  {
+    id: '1', title: 'Бекон', category: 'Мясо', emoji: '🥓',
+  },
+  {
+    id: '2', title: 'Банан', category: 'Фрукты', emoji: '🍌',
+  },
+  {
+    id: '3', title: 'Брокколи', category: 'Овощи', emoji: '🥦',
+  },
+  {
+    id: '4', title: 'Бургер', category: 'Фастфуд', emoji: '🍔',
+  },
+  {
+    id: '5', title: 'Пирог', category: 'Десерты', emoji: '🥧',
+  },
+  {
+    id: '6', title: 'Конфета', category: 'Десерты', emoji: '🍬',
+  },
+  {
+    id: '7', title: 'Морковь', category: 'Овощи', emoji: '🥕',
+  },
 ];
 
 const meta: Meta<typeof Select> = {
@@ -22,11 +43,35 @@ const meta: Meta<typeof Select> = {
 export default meta;
 
 export const SelectStory = (args) => {
-  const [selectedOption, setSelectedOption] = React.useState<ISelectOptions>();
+  const [selectedOption, setSelectedOption] = React.useState<IFoodOption>(List[0]);
 
-  console.log(selectedOption);
+  const handleOptionClick = (option: IFoodOption) => setSelectedOption(option);
 
-  const handleOptionClick = (option: ISelectOptions) => setSelectedOption(option);
+  const renderOption = (option: IFoodOption, isSelected: boolean) => (
+    <div
+      style={{
+        padding: '10px 14px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '2px',
+        backgroundColor: isSelected ? '#e6f7ff' : '#fff',
+        borderLeft: isSelected ? '4px solid #1890ff' : '4px solid transparent',
+        cursor: 'pointer',
+        fontFamily: 'Arial, sans-serif',
+      }}
+    >
+      <div style={{ fontWeight: 600 }}>
+        {option.emoji}
+        {' '}
+        {option.title}
+      </div>
+      <div style={{ fontSize: '12px', color: '#888' }}>
+        Категория:
+        {' '}
+        {option.category}
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -66,6 +111,7 @@ export const SelectStory = (args) => {
             selectedOption={selectedOption}
             emptyContent="Не найдено"
             onOptionClick={handleOptionClick}
+            renderOption={renderOption}
             placeholder="Выберите опцию"
           />
         </div>
@@ -96,10 +142,12 @@ export const SelectStory = (args) => {
             emptyContent="Не найдено"
             isInputReadOnly
             onOptionClick={handleOptionClick}
+            renderOption={renderOption}
             placeholder="Выберите опцию"
           />
         </div>
       </div>
+
       <div
         style={{
           marginTop: '30px',
@@ -111,13 +159,17 @@ export const SelectStory = (args) => {
       >
         <strong>title:</strong>
         {' '}
-        {selectedOption?.title?.toString()}
+        {selectedOption?.title}
         {' '}
-        -
         {' '}
-        <strong>Key:</strong>
+        <strong>emoji:</strong>
         {' '}
-        {selectedOption?.id?.toString()}
+        {selectedOption?.emoji}
+        {' '}
+        {' '}
+        <strong>category:</strong>
+        {' '}
+        {selectedOption?.category}
       </div>
     </>
   );

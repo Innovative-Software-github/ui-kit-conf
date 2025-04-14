@@ -10,13 +10,13 @@ import clsx from 'clsx';
 import { IInputProps, Input } from '../Input/Input';
 import { IconType } from '../Icon/IconsMapping';
 import { Icon } from '../Icon/Icon';
-import { Dropdown, ISelectOptions } from '../Dropdown/Dropdown';
+import { Dropdown, ISelectOption } from '../Dropdown/Dropdown';
 
 import cls from '../Dropdown/Dropdown.module.css';
 
-export interface ISelectProps extends Omit<IInputProps, 'onChange' | 'value'> {
-  options: ISelectOptions[];
-  selectedOption: ISelectOptions;
+export interface ISelectProps<TOption extends ISelectOption> extends Omit<IInputProps, 'onChange' | 'value'> {
+  options: TOption[];
+  selectedOption: TOption;
   /**
    * Текст, отображаемый, если опции не найдены.
    * @default 'Не найдено'
@@ -33,8 +33,23 @@ export interface ISelectProps extends Omit<IInputProps, 'onChange' | 'value'> {
    * Дополнительный CSS-класс для выпадающего списка.
    */
   dropdownClassName?: string;
-  onInputChange?: (option: ISelectOptions) => void;
-  onOptionClick: (option: ISelectOptions) => void;
+  /**
+   * Функция для создания кастомного элемента DropDown
+   *
+   * @param option - сам список элементов
+   * @param isSelected - состояние выбранного элемента
+   * @returns компонент DropDown (React.ReactNode)
+   */
+  // Для Dropdown
+  getOptionKey?: (option: TOption) => string | number;
+  getOptionValue?: (option: TOption) => string;
+  renderOption?: (
+    option: TOption,
+    isSelected: boolean
+  ) => React.ReactNode;
+
+  onInputChange?: (option:TOption) => void;
+  onOptionClick: (option: TOption) => void;
 }
 
 /**
@@ -53,41 +68,46 @@ export interface ISelectProps extends Omit<IInputProps, 'onChange' | 'value'> {
  * @param {ISelectProps} props - Свойства компонента.
  * @returns {React.FC} Компонент `Select`.
  */
-export const Select:React.FC<ISelectProps> = ({
+export const Select = <TOption extends ISelectOption>({
   options,
   selectedOption,
+  getOptionKey = (option) => option.id,
+  getOptionValue = (option) => option.title,
   emptyContent,
   isInputReadOnly = false,
   className,
   dropdownClassName,
+  renderOption,
   onInputChange,
   onOptionClick,
   ...inputProps
-}) => {
-  const [inputValue, setInputValue] = React.useState(selectedOption?.title || '');
+}: ISelectProps<TOption>) => {
+  const [inputValue, setInputValue] = React.useState(getOptionValue(selectedOption));
 
   const isUncontrolledInput = !isInputReadOnly && !onInputChange;
 
   const filteredOptions = React.useMemo(() => {
     if (isInputReadOnly || !inputValue) return options;
 
-    return matchSorter(options, inputValue, { keys: ['value'] });
-  }, [inputValue, options]);
+    return matchSorter(options, inputValue, {
+      keys: [(item) => getOptionValue(item)],
+    });
+  }, [inputValue, options, getOptionValue]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
 
     setInputValue(value);
     if (!isInputReadOnly && onInputChange) {
-      onInputChange({ title: value });
+      onInputChange({ ...selectedOption, title: value });
     }
   };
 
-  const handleInputBlur = () => isUncontrolledInput && setInputValue(selectedOption?.title);
+  const handleInputBlur = () => isUncontrolledInput && setInputValue(getOptionValue(selectedOption));
 
   React.useEffect(() => {
-    setInputValue(selectedOption?.title);
-  }, [selectedOption?.title]);
+    setInputValue(getOptionValue(selectedOption));
+  }, [getOptionValue(selectedOption)]);
 
   return (
     <ComboboxProvider>
@@ -113,7 +133,10 @@ export const Select:React.FC<ISelectProps> = ({
         options={filteredOptions}
         selectedOption={selectedOption}
         dropdownClassName={dropdownClassName}
+        renderOption={renderOption}
         onOptionClick={onOptionClick}
+        getOptionKey={getOptionKey}
+        getOptionValue={getOptionValue}
       />
     </ComboboxProvider>
   );
